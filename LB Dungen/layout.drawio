@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="nNgdWYCG5MtvIOmduSkE" name="Page-1">
-        <mxGraphModel dx="516" dy="563" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1284" dy="563" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -55,7 +55,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="18" value="Tasks&lt;br&gt;_id&lt;br&gt;title&lt;br&gt;description&lt;br&gt;project&lt;br&gt;assignedTo&lt;br&gt;priority&lt;br&gt;status&lt;br&gt;deadline&lt;br&gt;createdAt&lt;br&gt;updateAt" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="680" y="250" width="120" height="170" as="geometry"/>
+                    <mxGeometry x="670" y="300" width="120" height="170" as="geometry"/>
                 </mxCell>
                 <mxCell id="20" value="Notifications&lt;br&gt;_id&lt;br&gt;user&lt;br&gt;message&lt;br&gt;read&lt;br&gt;createdAt&lt;br&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="480" y="460" width="120" height="100" as="geometry"/>
@@ -63,8 +63,23 @@
                 <mxCell id="23" value="Backend structure" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="610" y="50" width="210" height="60" as="geometry"/>
                 </mxCell>
+                <mxCell id="29" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="24" target="25">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
                 <mxCell id="24" value="Quiz question bank" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="640" y="130" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="680" y="120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="25" target="26">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="Quiz table" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="830" y="120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" style="edgeStyle=none;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0.937;entryY=1.017;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="26" target="13">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="user grade table&lt;br&gt;(leaderboard)&lt;br&gt;_id&lt;br&gt;score&lt;br&gt;quiz type" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="830" y="240" width="120" height="80" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
