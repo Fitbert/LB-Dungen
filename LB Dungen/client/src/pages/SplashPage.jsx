@@ -1,0 +1,1 @@
+//logo and login/sign up modal buttons here for logged out users
