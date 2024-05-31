@@ -1,10 +1,11 @@
 //header will import the navigation component into it for the nav button functionality, navigation will have a navbar component for that functionality
 import Navigation from './Navigation.jsx';
+import LdSign from '../assets/LD_Sign_600px'
   
 export default function Header(){
     return(
         <div>
-            <h1>Language Dungeon</h1>
+            <img src={LdSign} alt={"Language Dungeon title on a wooden sign"} />
             <Navigation/> 
         </div>
     )
