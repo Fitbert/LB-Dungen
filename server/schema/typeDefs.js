@@ -1,5 +1,5 @@
 import { gql } from 'graphql-tag';
-
+// define the type definitions for the schema
 const typeDefs = gql`
   type User {
     id: ID!
