@@ -1,31 +1,38 @@
 import { gql } from 'graphql-tag';
-
+// define the type definitions for the schema
 const typeDefs = gql`
   type User {
     id: ID!
-    name: String!
+    username: String!
+    password: String!
   }
 
-  type Project {
-    id: ID!
-    name: String!
+  type Auth {
+    token: ID!
+    user: User
   }
 
-  type Task {
+  type Quiz {
     id: ID!
     title: String!
+    questions: [Questions]!
+  }
+
+  type Questions {
+    id: ID!
+    text: String!
+    answers: [Answers]!
+  }
+
+  type Answer {
+    id: ID!
+    text: String!
+    correct: Boolean!
   }
 
   type Query {
-    users: [User]
-    projects: [Project]
-    tasks: [Task]
-  }
-
-  type Mutation {
-    addUser(name: String!): User
-    addProject(name: String!): Project
-    addTask(title: String!): Task
+    users: [User]!
+    quizzes: [Quiz]!
   }
 `;
 
