@@ -21,7 +21,7 @@ const typeDefs = gql`
   type Questions {
     id: ID!
     text: String!
-    answers: [Answers]!
+    answers: [Answer]!
   }
 
   type Answer {
