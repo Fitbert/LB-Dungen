@@ -1,6 +1,6 @@
 // Bringing in the required import from 'react-router-dom'
 import { Link } from 'react-router-dom';
-import Navbar from './UI/Navbar';
+import Navbar from './Navbar';
 
 export default function Navigation() {
   // pass link element to Navbar component as props so that Navbar function/component can map through the array of links and render them for use in the navbar on screen

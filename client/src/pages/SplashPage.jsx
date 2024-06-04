@@ -1,37 +1,38 @@
-//logo and login/sign up modal buttons here for logged out users
-
-import { useHistory } from 'react-router-dom';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../index.css'; // Ensure you have styles defined
 
 export default function SplashPage() {
-    const history = useHistory();
+  const navigate = useNavigate();
 
-    return (
-    <body className="--background bungee-regular">
-    <header >
-        <header className="text-center">
-            <h1>Welcome to The Language Dungeon</h1>
-        </header>
-    </header>
-    
-    <main>
-        <img src="./Assets/LD_Logo_1000px.png" alt="logo"  />
-    <h2>About The Language Dungeon</h2>
-    <p>The Language Dungeon is your ultimate destination for language learning and exploration. Embark on an exciting journey through the realms of words and unlock the secrets of effective communication.</p>
-    
+  const handleSignUpClick = () => {
+    navigate('/signup'); // Ensure you have a route for "/signup"
+  };
 
-    
-    <h2>Get Started</h2>
-    <p>Begin your adventure!</p>
-    <button>Sign Up Now</button>
-    </main>
-    
-    <footer>
+  return (
+    <div className="--background bungee-regular">
+      <header className="text-center">
+        <h1>Welcome to The Language Dungeon</h1>
+      </header>
+
+      <main>
+        <img src="./assets/LD_Logo_1000px.png" alt="logo" />
+        <h2>About The Language Dungeon</h2>
+        <p>
+          The Language Dungeon is your ultimate destination for language learning and exploration. 
+          Embark on an exciting journey through the realms of words and unlock the secrets of effective communication.
+        </p>
+
+        <h2>Get Started</h2>
+        <p>Begin your adventure!</p>
+        <button onClick={handleSignUpClick}>Sign Up Now</button>
+      </main>
+
+      <footer>
         &copy; 2023 The Language Dungeon. All rights reserved.
-    </footer>
+      </footer>
 
-    <script src="cursor.js"></script>
-</body>
-    );
-    
-   
+      <script src=".client/cursor.js"></script>
+    </div>
+  );
 }
