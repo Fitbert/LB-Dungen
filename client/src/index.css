@@ -3,6 +3,13 @@
     line-height: 1.5;
     font-weight: 400;
   
+    /* color pallet */
+    --light-color: #d4e79e;
+    --neutral: #b8c480;
+    --light-dk: #922d50;
+    --dark: #501537;
+    --background: #C3D2C7;
+
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
     background-color: #242424;
@@ -13,7 +20,13 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
   }
-  
+ 
+  /* font family */
+.bungee-regular {
+  font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
   a {
     font-weight: 500;
     color: #646cff;
