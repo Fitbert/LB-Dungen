@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import Navbar from './Navbar.jsx';  // Ensure this path is correct
+//import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
 
 export default function Navigation() {
   return (

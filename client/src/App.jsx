@@ -1,13 +1,13 @@
-import React, { Fragment } from 'react';
+//import React, { Fragment } from 'react';
 import { Outlet } from 'react-router-dom';
-import Navigation from "./components/Navigation.jsx";  // Corrected import statement
+import Headers from './components/Header';
 
 function App() {
   return (
-    <Fragment>
-      <Navigation />
+    <>
+      <Headers />
       <Outlet />
-    </Fragment>
+    </>
   );
 }
 
