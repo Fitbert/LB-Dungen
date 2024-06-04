@@ -1,16 +1,14 @@
-const express = require('express');
+import express from 'express';
+import { schema } from './schema/schema'; 
+import dotenv from 'dotenv';
+import cors from 'cors';
+const connectDB = require('./config/db');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
-const { authMiddleware } = require('./utils/auth');
-import { schema } from './schemas/index.js'; 
 
-const { typeDefs, resolvers } = require('./schemas');
-const connectDB = require('./config/db');
-// import dotenv from 'dotenv';
-// import cors from 'cors';
-
-// dotenv.config();
+dotenv.config();
+connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -36,11 +34,9 @@ const StartServer = async () => {
     });
   }
 
- connectDB.once('open', () => {
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-    });
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    console.log(`Use GraphQL at http://localhost:${PORT}/graphql`); 
   });
 };
 
