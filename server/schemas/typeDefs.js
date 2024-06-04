@@ -1,10 +1,10 @@
-import { gql } from 'graphql-tag';
 // define the type definitions for the schema
 const typeDefs = gql`
   type User {
-    id: ID!
+    _id: ID!
     username: String!
     password: String!
+    quizzes: [Quiz]!
   }
 
   type Auth {
@@ -13,26 +13,37 @@ const typeDefs = gql`
   }
 
   type Quiz {
-    id: ID!
+    _id: ID!
     title: String!
     questions: [Questions]!
   }
 
   type Questions {
-    id: ID!
-    text: String!
+    _id: ID!
+    questionText: String!
     answers: [Answer]!
   }
 
   type Answer {
-    id: ID!
-    text: String!
+    _id: ID!
+    answerText: String!
     correct: Boolean!
   }
 
   type Query {
     users: [User]!
+    user(username: String!): User
     quizzes: [Quiz]!
+    quiz(quizId: ID!): Quiz
+    me: User
+  }
+
+  type Mutation {
+    addUser(username: String!, password: String!): Auth
+    login(username: String!, password: String!): Auth
+    addQuiz(title: String!): Quiz
+    addQuestion(quizId: ID!, questionText: String!): Quiz
+    addAnswer(questionId: ID!, answerText: String!, correct: Boolean!): Quiz
   }
 `;
 
