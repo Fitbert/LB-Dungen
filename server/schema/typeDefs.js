@@ -1,38 +1,29 @@
-import { gql } from 'graphql-tag';
-// define the type definitions for the schema
+import { gql } from 'apollo-server-express';
+
 const typeDefs = gql`
-  type User {
-    id: ID!
-    username: String!
-    password: String!
-  }
-
-  type Auth {
-    token: ID!
-    user: User
-  }
-
-  type Quiz {
-    id: ID!
-    title: String!
-    questions: [Questions]!
-  }
-
-  type Questions {
-    id: ID!
-    text: String!
-    answers: [Answers]!
-  }
-
   type Answer {
     id: ID!
-    text: String!
-    correct: Boolean!
+    content: String!
+    questionId: ID!
+    question: Question  # Add this line to include the question field
+  }
+
+  type Question {
+    id: ID!
+    content: String!
+    answers: [Answer]
   }
 
   type Query {
-    users: [User]!
-    quizzes: [Quiz]!
+    questions: [Question]
+    question(id: ID!): Question
+    answers: [Answer]
+    answer(id: ID!): Answer
+  }
+
+  type Mutation {
+    addQuestion(content: String!): Question
+    addAnswer(content: String!, questionId: ID!): Answer
   }
 `;
 
