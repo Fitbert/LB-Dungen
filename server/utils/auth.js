@@ -1,36 +1,31 @@
-const { GraphQLError } = require('graphql');
-const webToken = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
-const secret = 'secret';
-const expiration = '2h';
+// Secret key for JWT signing and verification
+const secret = process.env.JWT_SECRET || 'your_secret_key';
 
-module.exports = {
-    AuthenticationError: new GraphQLError('Could not authenticate user', {
-        extensions: { code: 'UNAUTHENTICATED' },
-    }),
-    authMiddleware: function ({ req }) {
-        let token = req.body.token || req.query.token || req.headers.authorization;
+// Middleware function to authenticate users
+export function authMiddleware({ req }) {
+  // Get the token from the request headers
+  let token = req.headers.authorization || '';
 
-        if (req.headers.authorization) {
-            token = token.split(' ').pop().trim();
-        }
+  // Remove 'Bearer ' from the token string if it exists
+  if (token.startsWith('Bearer ')) {
+    token = token.slice(7, token.length).trimLeft();
+  }
 
-        if (!token) {
-            return req;
-        }
+  // Initialize the user context to null
+  let user = null;
 
-        try {
-            const { data } = webToken.verify(token, secret, { maxAge: expiration });
-            req.user = data;
-        } catch {
-            console.log('Invalid token');
-        }
+  // Verify the token if it exists
+  if (token) {
+    try {
+      // Decode the token and attach user information to the context
+      user = jwt.verify(token, secret);
+    } catch (err) {
+      console.error('Token verification error:', err);
+    }
+  }
 
-        return req;
-    },
-    signToken: function ({ username, _id }) {
-        const payload = { username, _id };
-
-        return webToken.sign({ data: payload }, secret, { expiresIn: expiration });
-    },
-};
+  // Attach user information to the request context
+  return { user };
+}

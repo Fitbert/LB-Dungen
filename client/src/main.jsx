@@ -1,11 +1,9 @@
-
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import from 'react-router-dom' for the router to work
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './index.css';
 
-// import the page views/react components
 import App from './App.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
 import HomePage from './pages/HomePage';
@@ -42,7 +40,7 @@ const router = createBrowserRouter([
 
 // Render the RouterProvider component
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );
-
-//do we need react strict mode  in the React.DOM createRoot part above?

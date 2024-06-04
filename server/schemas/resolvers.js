@@ -1,79 +1,62 @@
-const { User, Quiz, Questions, Answer } = require('../models');
-const { signToken, AuthenticationError } = require('../utils/auth');
+const quizzes = [
+  {
+    id: '1',
+    title: 'Spanish Basics',
+    questions: [
+      {
+        id: '1',
+        content: 'What is the Spanish word for "apple"?',
+        answers: [
+          { id: '1', content: 'Manzana', questionId: '1' },
+          { id: '2', content: 'Pera', questionId: '1' },
+        ],
+      },
+      {
+        id: '2',
+        content: 'How do you say "Good morning" in Spanish?',
+        answers: [
+          { id: '3', content: 'Buenos días', questionId: '2' },
+          { id: '4', content: 'Buenas noches', questionId: '2' },
+        ],
+      },
+    ],
+  },
+];
 
-const resolvers = {
-    Query: {
-        users: async () => {
-            return User.find();
-        },
-        user: async (parent, { username }) => {
-            return User.findOne({ username }).populate('quizzes');
-        },
-        quizzes: async () => {
-            return Quiz.find();
-        },
-        quiz: async (parent, { quizId }) => {
-            return Quiz.findOne({ _id: quizId }).populate('questions');
-        },
-        me: async (parent, args, context) => {
-            if (context.user) {
-                return User.findOne({ _id: context.user._id }).populate('quizzes');
-            }
-            throw new AuthenticationError('You need to be logged in!');
-        }
+export const resolvers = {
+  Query: {
+    quizzes: async () => {
+      return quizzes;
     },
-
-    Mutation: {
-        addUser: async (parent, { username, password }) => {
-            const user = await User.create({ username, password });
-            const token = signToken(user);
-            return { token, user };
-        },
-        login: async (parent, { username, password }) => {
-            const user = await User.findOne({ username });
-
-            if (!user) {
-                throw new AuthenticationError('No user found with this username');
-            }
-
-            const correctPw = await user.isCorrectPassword(password);
-
-            if (!correctPw) {
-                throw new AuthenticationError('Incorrect credentials');
-            }
-
-            const token = signToken(user);
-            return { token, user };
-        },
-        addQuiz: async (parent, { title }, context) => {
-            if (context.user) {
-                const quiz = await Quiz.create({ title });
-                await User.findOneAndUpdate(
-                    { _id: context.user._id },
-                    { $addToSet: { quizzes: quiz._id } }
-                );
-                return quiz;
-            }
-            throw new AuthenticationError('You need to be logged in!');
-        },
-        addQuestion: async (parent, { quizId, questionText }) => {
-            const question = await Questions.create({ questionText });
-            await Quiz.findOneAndUpdate(
-                { _id: quizId },
-                { $addToSet: { questions: question._id } }
-            );
-            return Quiz.findOne({ _id: quizId }).populate('questions');
-        }
-        ,
-        addAnswer: async (parent, { questionId, answerText, correct }) => {
-            const answer = await Answer.create({ answerText, correct });
-            await Questions.findOneAndUpdate(
-                { _id: questionId },
-                { $addToSet: { answers: answer._id } }
-            );
-            return Questions.findOne({ _id: questionId }).populate('answers');
-        },
+    quiz: async (_, { id }) => {
+      return quizzes.find((quiz) => quiz.id === id);
     },
+    questions: async () => {
+      return quizzes.flatMap((quiz) => quiz.questions);
+    },
+    question: async (_, { id }) => {
+      return quizzes.flatMap((quiz) => quiz.questions).find((question) => question.id === id);
+    },
+    answers: async () => {
+      return quizzes.flatMap((quiz) =>
+        quiz.questions.flatMap((question) => question.answers)
+      );
+    },
+    answer: async (_, { id }) => {
+      return quizzes
+        .flatMap((quiz) => quiz.questions)
+        .flatMap((question) => question.answers)
+        .find((answer) => answer.id === id);
+    },
+  },
+  Quiz: {
+    questions: async (parent) => {
+      return parent.questions;
+    },
+  },
+  Question: {
+    answers: async (parent) => {
+      return parent.answers;
+    },
+  },
 };
-
-module.exports = resolvers;
