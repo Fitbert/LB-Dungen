@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../index.css'; // Ensure you have styles defined
+import ldLogo from '../assets/LD_Logo_1000px.png';
 
 export default function SplashPage() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export default function SplashPage() {
       </header>
 
       <main>
-        <img src="./assets/LD_Logo_1000px.png" alt="logo" />
+        <img src={ldLogo} alt="logo" />
         <h2>About The Language Dungeon</h2>
         <p>
           The Language Dungeon is your ultimate destination for language learning and exploration. 
