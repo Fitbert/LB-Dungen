@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     var cursor = document.createElement('img');
-    cursor.src = 'Assets/LD_Bat_100px.png';
+    cursor.src = './src/assets/LD_Bat_100px.png';
     cursor.style.position = 'fixed';
     cursor.style.pointerEvents = 'none';
     document.body.appendChild(cursor);
