@@ -1,4 +1,4 @@
-const { User } = require('../models');
+import { User } from '../models/index.js';
 const { authMiddleware } = require('../utils/auth');
 
 const quizzes = [
