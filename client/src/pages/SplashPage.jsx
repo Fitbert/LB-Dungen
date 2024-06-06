@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/SplashPage.css';
-import '../cursor.js';
+// import './cursor.js'; // Import cursor.js as a script
 
 export default function SplashPage() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = '../cursor.js';
-    script.async = true;
-    document.body.appendChild(script);
+  // useEffect(() => {
+  //   const script = document.createElement('script');
+  //   script.src = cursorScript;
+  //   script.async = true;
+  //   document.body.appendChild(script);
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   };
+  // }, []);
 
   const handleSignUpClick = () => {
     // Perform sign-up logic with the username and password

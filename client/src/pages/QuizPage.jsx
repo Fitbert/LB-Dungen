@@ -1,22 +1,21 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/QuizPage.css';
-import '../cursor.js';
-import Navbar from '../components/Navbar';
-
+// import '../cursor.js';
+// 
 export default function QuizPage() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = '../cursor.js';
-    script.async = true;
-    document.body.appendChild(script);
+  // useEffect(() => {
+  //   const script = document.createElement('script');
+  //   script.src = '../cursor.js';
+  //   script.async = true;
+  //   document.body.appendChild(script);
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   };
+  // }, []);
 
   const handleStartQuizClick = () => {
     // Navigate to the first question of the quiz

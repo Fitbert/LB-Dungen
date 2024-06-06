@@ -1,15 +1,15 @@
 .quiz-page {
-    background-color: #C3D2C7;
-    background-image: url('path/to/your/brick-image.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-blend-mode: overlay;
-    text-align: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: #501537;
+  background-color: #C3D2C7;
+  background-image: url('src/assets/Grey_Brick_Background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  text-align: center;
+  width: 260%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #501537;
   }
   
   .logo {
