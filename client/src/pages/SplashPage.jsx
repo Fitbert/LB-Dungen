@@ -1,38 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../index.css'; // Ensure you have styles defined
+import '../styles/SplashPage.css';
+import '../cursor.js';
 
 export default function SplashPage() {
   const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = '../cursor.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const handleSignUpClick = () => {
-    navigate('/signup'); // Ensure you have a route for "/signup"
+    // Perform sign-up logic with the username and password
+    console.log('Sign Up:', username, password);
+    navigate('/signup');
   };
 
   return (
-    <div className="--background bungee-regular">
-      <header className="text-center">
-        <h1>Welcome to The Language Dungeon</h1>
-      </header>
+    <div className="splash-page">
+      <h1>Welcome to</h1>
+      <img src="src/assets/LD_Logo_1000px.png" alt="logo" className="logo" />
 
-      <main>
-        <img src="./assets/LD_Logo_1000px.png" alt="logo" />
-        <h2>About The Language Dungeon</h2>
+      <h2>About The Language Dungeon</h2>
+      <div className="paragraph-container">
         <p>
-          The Language Dungeon is your ultimate destination for language learning and exploration. 
-          Embark on an exciting journey through the realms of words and unlock the secrets of effective communication.
+          <span className="paragraph-text">
+            The Language Dungeon is your ultimate destination for language learning and exploration.
+            Embark on an exciting journey through the realms of words and unlock the secrets of effective communication.
+          </span>
         </p>
+      </div>
 
+      <div className="signup-container">
         <h2>Get Started</h2>
-        <p>Begin your adventure!</p>
+        <p>Please create a <b>Username</b> and <b>Password</b> to begin your Language Learning Journey!</p>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <button onClick={handleSignUpClick}>Sign Up Now</button>
-      </main>
+      </div>
 
       <footer>
         &copy; 2023 The Language Dungeon. All rights reserved.
       </footer>
-
-      <script src=".client/cursor.js"></script>
     </div>
   );
 }
