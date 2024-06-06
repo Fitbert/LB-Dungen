@@ -1,3 +1,6 @@
+const { User, Quiz, Question, Answer } = require('../models');
+const { signToken, authMiddleware } = require('../utils/auth');
+
 const quizzes = [
   {
     id: '1',
@@ -25,6 +28,12 @@ const quizzes = [
 
 export const resolvers = {
   Query: {
+    users: async () => {
+      return User.find().populate('quizzes');
+    },
+    user: async (_, { username }) => {
+      return User.findOne({ username }).populate('quizzes');
+    },
     quizzes: async () => {
       return quizzes;
     },
