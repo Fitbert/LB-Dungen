@@ -26,7 +26,7 @@ const quizzes = [
   },
 ];
 
-export const resolvers = {
+module.exports = {
   Query: {
     users: async () => {
       return User.find().populate('quizzes');
