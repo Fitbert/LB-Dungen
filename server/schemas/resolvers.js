@@ -1,5 +1,5 @@
-const { User, Quiz, Question, Answer } = require('../models');
-const { signToken, authMiddleware } = require('../utils/auth');
+const { User } = require('../models');
+const { authMiddleware } = require('../utils/auth');
 
 const quizzes = [
   {
@@ -57,15 +57,49 @@ export const resolvers = {
         .flatMap((question) => question.answers)
         .find((answer) => answer.id === id);
     },
-  },
-  Quiz: {
-    questions: async (parent) => {
-      return parent.questions;
+    me: async (_, __, context) => {
+      return User.findOne({ _id: context.user._id }).populate('quizzes');
     },
   },
-  Question: {
-    answers: async (parent) => {
-      return parent.answers;
+
+  Mutation: {
+    addUser: async (_, { username, password }) => {
+      const user = await User.create({ username, password });
+      const token = authMiddleware(user);
+      return { token, user };
+    },
+    login: async (_, { username, password }) => {
+      const user = await User.findOne({ username });
+
+      if (!user) {
+        throw new Error('Incorrect credentials');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new Error('Incorrect credentials');
+      }
+
+      const token = authMiddleware(user);
+      return { token, user };
+    },
+    addQuiz: async (_, { title }) => {
+      const quiz = { id: quizzes.length + 1, title, questions: [] };
+      quizzes.push(quiz);
+      return quiz;
+    },
+    addQuestion: async (_, { content, quizId }) => {
+      const question = { id: quizzes.flatMap((quiz) => quiz.questions).length + 1, content, answers: [] };
+      const quiz = quizzes.find((quiz) => quiz.id === quizId);
+      quiz.questions.push(question);
+      return question;
+    },
+    addAnswer: async (_, { content, questionId }) => {
+      const answer = { id: quizzes.flatMap((quiz) => quiz.questions).flatMap((question) => question.answers).length + 1, content, questionId };
+      const question = quizzes.flatMap((quiz) => quiz.questions).find((question) => question.id === questionId);
+      question.answers.push(answer);
+      return answer;
     },
   },
 };
