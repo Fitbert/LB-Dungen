@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+
 // define schema for answer
 const answerSchema = new Schema({
     answerText: {
@@ -14,4 +15,4 @@ const answerSchema = new Schema({
 // create the Answer model using the answerSchema
 const Answer = model('Answer', answerSchema);
 
-module.exports = Answer;
+export default Answer;
