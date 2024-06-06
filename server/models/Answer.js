@@ -15,4 +15,4 @@ const answerSchema = new Schema({
 // create the Answer model using the answerSchema
 const Answer = model('Answer', answerSchema);
 
-export default Answer;
+module.exports = Answer;

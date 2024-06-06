@@ -1,6 +1,6 @@
-import User from './User.js';
-import Quiz from './Quiz.js';
-import Questions from './Questions.js';
-import Answer from './Answer.js';
+const User = require('./User');
+const Quiz = require('./Quiz');
+const Question = require('./Question');
+const Answer = require('./Answer');
 
-export { User, Quiz, Questions, Answer };
+module.exports = { User, Quiz, Question, Answer };
