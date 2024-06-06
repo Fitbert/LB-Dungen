@@ -41,6 +41,7 @@ export default function QuizPage() {
 
       <div className="start-quiz-container">
         <button onClick={handleStartQuizClick}>Start Quiz</button>
+        <QuizContainer/>
       </div>
 
       <footer>
@@ -49,3 +50,4 @@ export default function QuizPage() {
     </div>
   );
 }
+
