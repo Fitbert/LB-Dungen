@@ -1,10 +1,10 @@
-import jwt from 'jsonwebtoken';
+const jwt = require('jsonwebtoken');
 
 // Secret key for JWT signing and verification
 const secret = process.env.JWT_SECRET || 'your_secret_key';
 
 // Middleware function to authenticate users
-export function authMiddleware({ req }) {
+function authMiddleware({ req }) {
   // Get the token from the request headers
   let token = req.headers.authorization || '';
 
@@ -29,3 +29,5 @@ export function authMiddleware({ req }) {
   // Attach user information to the request context
   return { user };
 }
+
+module.exports = { authMiddleware };
