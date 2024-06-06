@@ -1,18 +1,19 @@
-
-
 import { useRouteError } from 'react-router-dom';
-//create const for the useRouteError import
+import '../styles/ErrorPage.css';
+
 export default function ErrorPage() {
   const error = useRouteError();
   console.error(error);
-//return error message using error variable
+
   return (
-    <div id="error-page">
-      <h1>Oh No!</h1>
-      <p>Sorry, we have encountered an error.</p>
-      <p>
-        <i>{error.statusText || error.message}</i>
-      </p>
+    <div className="error-page">
+      <div className="error-content">
+        <img src="src/assets/Error_Page_Image.png" alt="logo" className="error-logo" />
+        <p className="error-text">Sorry, we have encountered an error.</p>
+        <p className="error-message">
+          <i>{error.statusText || error.message}</i>
+        </p>
+      </div>
     </div>
   );
 }

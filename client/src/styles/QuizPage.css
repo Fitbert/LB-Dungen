@@ -1,0 +1,63 @@
+.quiz-page {
+    background-color: #C3D2C7;
+    background-image: url('path/to/your/brick-image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #501537;
+  }
+  
+  .logo {
+    width: 600px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .paragraph-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+ 
+  .paragraph-text {
+    display: inline-block;
+    font-size: 16px;
+    color: #501537;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 4px;
+    max-width: 400px;
+    margin: 0 20px;
+  }
+  
+  .start-quiz-container {
+    margin-top: 30px;
+  }
+  
+  .start-quiz-container button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #501537;
+    color: #D4e79e;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .start-quiz-container button:hover {
+    background-color: #3c1b43;
+  }
+  
+  footer {
+    font-size: 14px;
+    color: #501537;
+    padding-top: 20px;
+    border-top: 1px solid #3c1b43;
+  }
