@@ -1,0 +1,86 @@
+.lead-page {
+    background-color: #C3D2C7;
+    background-image: url('src/assets/Grey_Brick_Background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    text-align: center;
+    /* width: 260%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #501537;
+    width: 100vw;
+    height: 70vh;
+  }
+  
+  .lead-page h1 {
+    font-size: 34px;
+    color: #3c1b43;
+    margin-bottom: 10px;
+  }
+  
+  .logo {
+    width: 600px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .lead-page img {
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+  
+  .lead-pagee h2 {
+    font-size: 34px;
+    color: #501537;
+    margin-bottom: 10px;
+  }
+  
+  .lead-page .paragraph-container {
+    margin-bottom: 20px;
+  }
+  
+  .lead-page .paragraph-text {
+    display: inline-block;
+    font-size: 16px;
+    color: #501537;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 4px;
+    max-width: 400px;
+    margin: 0 20px;
+  }
+  
+  .lead-page button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #501537;
+    color: #D4e79e;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .lead-page button:hover {
+    background-color: #3c1b43;
+  }
+  
+  .lead-page footer {
+    font-size: 14px;
+    color: #501537;
+    padding-top: 20px;
+    border-top: 1px solid #3c1b43;
+  }
+  .paragraph-text {
+    display: inline-block;
+    font-size: 16px;
+    color: #501537;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 4px;
+    max-width: 400px;
+    margin: 0 20px;
+  }

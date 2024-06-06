@@ -1,11 +1,12 @@
 //import React, { Fragment } from 'react';
 import { Outlet } from 'react-router-dom';
 import Headers from './components/Header';
-
+import Cursor from './components/Cursor';
 function App() {
   return (
     <>
-      <Headers />
+      {window.location.pathname !== '/' && <Headers />}
+      <Cursor/>
       <Outlet />
     </>
   );

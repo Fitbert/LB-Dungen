@@ -2,22 +2,23 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/HomePage.css';
-import '../cursor.js';
+// import '../cursor.js';
 import Navbar from '../components/Navbar';
+import '../styles/HomePage.css';
 
 export default function HomePage() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = '../cursor.js';
-    script.async = true;
-    document.body.appendChild(script);
+  // useEffect(() => {
+  //   const script = document.createElement('script');
+  //   script.src = '../cursor.js';
+  //   script.async = true;
+  //   document.body.appendChild(script);
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   };
+  // }, []);
 
   const handleStartQuizClick = () => {
     // Navigate to the quiz page
@@ -26,7 +27,7 @@ export default function HomePage() {
 
   return (
     <div className="home-page">
-      <Navbar />
+      
 
       <h1>Welcome, [User]!</h1>
       <img src="src/assets/LD_Logo_1000px.png" alt="logo" className="logo" />

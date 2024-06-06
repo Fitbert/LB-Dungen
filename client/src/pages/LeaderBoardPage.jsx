@@ -1,23 +1,21 @@
 //leaderboard elements/components here 
 import React, { useEffect, useState } from 'react';
-
+import '../styles/LeaderBoardPage.css';
 export default function LeaderBoardPage() {
     const [leaderboardData, setLeaderboardData] = useState([]);
 
     useEffect(() => {
-        // Fetch leaderboard data from an API or database
-        // and update the leaderboardData state
-        // Example:
-        fetch('/api/leaderboard')
+        // Fetch leaderboard data from the server
+        fetch('/models/user.js')
             .then(response => response.json())
             .then(data => setLeaderboardData(data))
             .catch(error => console.error(error));
     }, []);
 
     return (
-        <div>
+        <div className = "lead-page">
             <h1>Leaderboard</h1>
-            <table>
+            <table className="paragraph-container">
                 <thead>
                     <tr>
                         <th>Rank</th>
@@ -25,11 +23,11 @@ export default function LeaderBoardPage() {
                         <th>Score</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="paragraph-text">
                     {leaderboardData.map((player, index) => (
-                        <tr key={player.id}>
+                        <tr key={player.username}>
                             <td>{index + 1}</td>
-                            <td>{player.name}</td>
+                            <td>{player.quiz}</td>
                             <td>{player.score}</td>
                         </tr>
                     ))}
