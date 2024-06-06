@@ -1,5 +1,6 @@
-import { gql } from 'apollo-server-express';
-export const typeDefs = gql`
+const { gql } = require('apollo-server-express');
+
+const typeDefs = gql`
   type User {
     _id: ID
     username: String!
@@ -50,3 +51,5 @@ export const typeDefs = gql`
     addAnswer(content: String!, questionId: ID!): Answer
   }
 `;
+
+module.exports = typeDefs;
