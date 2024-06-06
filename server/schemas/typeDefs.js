@@ -1,50 +1,31 @@
-// define the type definitions for the schema
-const typeDefs = gql`
-  type User {
-    _id: ID!
-    username: String!
-    password: String!
-    quizzes: [Quiz]!
-  }
-
-  type Auth {
-    token: ID!
-    user: User
-  }
-
-  type Quiz {
-    _id: ID!
-    title: String!
-    questions: [Questions]!
-  }
-
-  type Questions {
-    _id: ID!
-    questionText: String!
-    answers: [Answer]!
-  }
-
+import { gql } from 'apollo-server-express';
+export const typeDefs = gql`
   type Answer {
-    _id: ID!
-    answerText: String!
-    correct: Boolean!
+    id: ID!
+    content: String!
+    questionId: ID!
   }
-
+  type Question {
+    id: ID!
+    content: String!
+    answers: [Answer]
+  }
+  type Quiz {
+    id: ID!
+    title: String!
+    questions: [Question]
+  }
   type Query {
-    users: [User]!
-    user(username: String!): User
-    quizzes: [Quiz]!
-    quiz(quizId: ID!): Quiz
-    me: User
+    quizzes: [Quiz]
+    quiz(id: ID!): Quiz
+    questions: [Question]
+    question(id: ID!): Question
+    answers: [Answer]
+    answer(id: ID!): Answer
   }
-
   type Mutation {
-    addUser(username: String!, password: String!): Auth
-    login(username: String!, password: String!): Auth
     addQuiz(title: String!): Quiz
-    addQuestion(quizId: ID!, questionText: String!): Quiz
-    addAnswer(questionId: ID!, answerText: String!, correct: Boolean!): Quiz
+    addQuestion(content: String!, quizId: ID!): Question
+    addAnswer(content: String!, questionId: ID!): Answer
   }
 `;
-
-export default typeDefs;
