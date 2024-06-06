@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 import './index.css';
 
@@ -10,6 +12,10 @@ import HomePage from './pages/HomePage';
 import LeaderBoardPage from './pages/LeaderBoardPage.jsx';
 import QuizPage from './pages/QuizPage.jsx';
 import SplashPage from './pages/SplashPage.jsx';
+import Donate from './pages/Donate.jsx';
+
+// Load your publishable key from .env or another source
+const stripePromise = loadStripe('your-publishable-key-here');
 
 // Define the the URL routes that show specified page components/XML elements/views based on the URL
 const router = createBrowserRouter([
@@ -34,6 +40,10 @@ const router = createBrowserRouter([
         path: '/quiz',
         element: <QuizPage />,
       },
+      {
+        path: '/donate',
+        element: <Donate />,
+      },
     ],
   },
 ]);
@@ -41,6 +51,8 @@ const router = createBrowserRouter([
 // Render the RouterProvider component
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Elements stripe={stripePromise}>
+      <RouterProvider router={router} />
+    </Elements>
   </React.StrictMode>
 );
