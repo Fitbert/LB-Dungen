@@ -80,3 +80,56 @@
       background-color: #f9f9f9;
     }
   }
+
+  /* index.css */
+
+.splash-page {
+  background-color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+}
+
+.splash-page header {
+  margin-bottom: 30px;
+}
+
+.splash-page h1 {
+  font-size: 36px;
+  color: #333;
+}
+
+.splash-page main {
+  margin-bottom: 30px;
+}
+
+.splash-page img {
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+.splash-page h2 {
+  font-size: 24px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.splash-page p {
+  font-size: 16px;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+.splash-page button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.splash-page footer {
+  font-size: 14px;
+  color: #999;
+}
