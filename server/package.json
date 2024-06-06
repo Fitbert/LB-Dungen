@@ -2,7 +2,7 @@
     "version": "0.0.0",
     "scripts": {
         "start": "node server.js",
-        "seed": "node seeds/seed.js",
+        "seed": "node seeders/questionSeeds.js",
         "watch": "nodemon server.js"
     },
     "dependencies": {
