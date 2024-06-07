@@ -1,13 +1,14 @@
 const { Schema, model } = require('mongoose');
+
 // define schema for answer
 const answerSchema = new Schema({
-    answerText: {
+    content: {
         type: String,
         required: true,
     },
-    correct: {
-        type: Boolean,
-        required: true,
+    questionId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Question',
     },
 });
 

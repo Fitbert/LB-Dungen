@@ -5,11 +5,12 @@
   background-repeat: no-repeat;
   background-blend-mode: overlay;
   text-align: center;
-  width: 260%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: #501537;
+  width: 100vw;
+  height: 100vh;
   }
   
   .logo {
@@ -18,23 +19,7 @@
     margin: 0 auto;
     display: block;
   }
-  
-  .paragraph-container {
-    display: flex;
-    justify-content: center;
-  }
-  
- 
-  .paragraph-text {
-    display: inline-block;
-    font-size: 16px;
-    color: #501537;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    border-radius: 4px;
-    max-width: 400px;
-    margin: 0 20px;
-  }
+
   
   .start-quiz-container {
     margin-top: 30px;

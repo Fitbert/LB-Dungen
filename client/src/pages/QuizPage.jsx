@@ -38,9 +38,11 @@ export default function QuizPage() {
         </p>
       </div>
 
-      <div className="start-quiz-container">
+      {/*<div className="start-quiz-container">
         <button onClick={handleStartQuizClick}>Start Quiz</button>
+        <QuizContainer/>
       </div>
+      */}
 
       <footer>
         &copy; 2023 The Language Dungeon. All rights reserved.
@@ -48,3 +50,4 @@ export default function QuizPage() {
     </div>
   );
 }
+
