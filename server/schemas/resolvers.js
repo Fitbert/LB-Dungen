@@ -1,61 +1,57 @@
-const { User } = require('../models');
+const { User, Quiz, Question, Answer } = require('../models');
 const { authMiddleware } = require('../utils/auth');
 
-const quizzes = [
-  {
-    id: '1',
-    title: 'Spanish Basics',
-    questions: [
-      {
-        id: '1',
-        content: 'What is the Spanish word for "apple"?',
-        answers: [
-          { id: '1', content: 'Manzana', questionId: '1' },
-          { id: '2', content: 'Pera', questionId: '1' },
-        ],
-      },
-      {
-        id: '2',
-        content: 'How do you say "Good morning" in Spanish?',
-        answers: [
-          { id: '3', content: 'Buenos días', questionId: '2' },
-          { id: '4', content: 'Buenas noches', questionId: '2' },
-        ],
-      },
-    ],
-  },
-];
+// const quizzes = [
+//   {
+//     id: '1',
+//     title: 'Spanish Basics',
+//     questions: [
+//       {
+//         id: '1',
+//         content: 'What is the Spanish word for "apple"?',
+//         answers: [
+//           { id: '1', content: 'Manzana', questionId: '1' },
+//           { id: '2', content: 'Pera', questionId: '1' },
+//         ],
+//       },
+//       {
+//         id: '2',
+//         content: 'How do you say "Good morning" in Spanish?',
+//         answers: [
+//           { id: '3', content: 'Buenos días', questionId: '2' },
+//           { id: '4', content: 'Buenas noches', questionId: '2' },
+//         ],
+//       },
+//     ],
+//   },
+// ];
 
-module.exports = {
+const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('quizzes');
+      return User.find();
     },
     user: async (_, { username }) => {
       return User.findOne({ username }).populate('quizzes');
     },
     quizzes: async () => {
-      return quizzes;
+      return Quiz.find().populate('questions');
     },
     quiz: async (_, { id }) => {
-      return quizzes.find((quiz) => quiz.id === id);
+      return Quiz.findOne({ _id: id }).populate('questions');
     },
     questions: async () => {
-      return quizzes.flatMap((quiz) => quiz.questions);
+      return Question.find().populate('answers');
     },
     question: async (_, { id }) => {
-      return quizzes.flatMap((quiz) => quiz.questions).find((question) => question.id === id);
+      return Question.findById(id).populate('answers');
     },
-    answers: async () => {
-      return quizzes.flatMap((quiz) =>
-        quiz.questions.flatMap((question) => question.answers)
-      );
+    answers: async (_, { questionId }) => {
+      const question = await Question.findById(questionId).populate('answers');
+      return question.answers;
     },
     answer: async (_, { id }) => {
-      return quizzes
-        .flatMap((quiz) => quiz.questions)
-        .flatMap((question) => question.answers)
-        .find((answer) => answer.id === id);
+      return Answer.findById(id)
     },
     me: async (_, __, context) => {
       return User.findOne({ _id: context.user._id }).populate('quizzes');
@@ -103,3 +99,5 @@ module.exports = {
     },
   },
 };
+
+module.exports = resolvers;

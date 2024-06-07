@@ -1,15 +1,11 @@
 const express = require('express');
-const dotenv = require('dotenv');
 const cors = require('cors');
-const connectDB = require('./config/db.js');
+const db = require('./config/db.js');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
 const { typeDefs, resolvers } = require('./schemas/index.js'); // Updated import
 const { authMiddleware } = require('./utils/auth.js');
-
-dotenv.config();
-connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -35,9 +31,11 @@ const StartServer = async () => {
     });
   }
 
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+  db.once('open', () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+    });
   });
 };
 

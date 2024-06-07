@@ -11,4 +11,4 @@ const quizSchema = new Schema({
 // create the Quiz model using the quizSchema
 const Quiz = model('Quiz', quizSchema);
 
-module.exports = Quiz;
+module.exports = { Quiz, quizSchema };
