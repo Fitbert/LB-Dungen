@@ -16,6 +16,9 @@ export default function Navbar() {
           <li>
             <Link to="/quiz">Quiz</Link>
           </li>
+          <li>
+            <Link to="/donate">Donate</Link>
+          </li>
           {/* Add more navigation items as needed */}
         </ul>
       </div>

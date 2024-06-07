@@ -18,7 +18,11 @@
 
     "install": "cd server && npm i && cd ../client && npm i",
 
-    "seed": "cd server && npm run seed",
+    "seeds": "cd server && npm run seed",
+
+    "seed": "node server/config/seeds.js",
+    
+    "web": "concurrently \"cd server && npm run start\" \"cd client && npm run dev\"",
 
     "build": "cd client && npm run build"
 
