@@ -1,30 +1,5 @@
-const { User, Quiz, Question, Answer } = require('../models');
+const { User, Quiz, Question } = require('../models');
 const { authMiddleware } = require('../utils/auth');
-
-// const quizzes = [
-//   {
-//     id: '1',
-//     title: 'Spanish Basics',
-//     questions: [
-//       {
-//         id: '1',
-//         content: 'What is the Spanish word for "apple"?',
-//         answers: [
-//           { id: '1', content: 'Manzana', questionId: '1' },
-//           { id: '2', content: 'Pera', questionId: '1' },
-//         ],
-//       },
-//       {
-//         id: '2',
-//         content: 'How do you say "Good morning" in Spanish?',
-//         answers: [
-//           { id: '3', content: 'Buenos días', questionId: '2' },
-//           { id: '4', content: 'Buenas noches', questionId: '2' },
-//         ],
-//       },
-//     ],
-//   },
-// ];
 
 const resolvers = {
   Query: {
@@ -38,23 +13,13 @@ const resolvers = {
       return Quiz.find().populate('questions');
     },
     quiz: async (_, { id }) => {
-      return Quiz.findOne({ _id: id }).populate('questions');
+      return Quiz.findById(id).populate('questions');
     },
-    questions: async () => {
-      return Question.find().populate('answers');
+    questions: async (_, { quizId }) => {
+      return Question.find({ quizId });
     },
     question: async (_, { id }) => {
       return Question.findById(id).populate('answers');
-    },
-    answers: async (_, { questionId }) => {
-      const question = await Question.findById(questionId).populate('answers');
-      return question.answers;
-    },
-    answer: async (_, { id }) => {
-      return Answer.findById(id)
-    },
-    me: async (_, __, context) => {
-      return User.findOne({ _id: context.user._id }).populate('quizzes');
     },
   },
 
