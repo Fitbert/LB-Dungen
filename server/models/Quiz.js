@@ -1,14 +1,19 @@
 const { Schema, model } = require('mongoose');
-const Question = require('./Question');
-// define schema for quiz
+
+// Define schema for quiz
 const quizSchema = new Schema({
     title: {
         type: String,
         required: true,
     },
-    questions: [Question.schema],
-    });
-// create the Quiz model using the quizSchema
+    questions: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Question',
+        },
+    ],
+});
+
 const Quiz = model('Quiz', quizSchema);
 
-module.exports = { Quiz, quizSchema };
+module.exports = Quiz;

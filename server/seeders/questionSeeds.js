@@ -1,27 +1,20 @@
 const mongoose = require('mongoose');
 const Quiz = require('../models/Quiz');
+const Question = require('../models/Questions');
 
 const quizzes = [
   {
     title: 'Spanish Basics',
     questions: [
       {
-        content: 'What is the Spanish word for "apple"?',
-        answers: [
-          { content: 'Manzana', correct: true },
-          { content: 'Pera', correct: false },
-          { content: 'Naranja', correct: false },
-          { content: 'Uva', correct: false },
-        ],
+        question: 'What is the Spanish word for "apple"?',
+        options: ['Manzana', 'Pera', 'Naranja', 'Uva'],
+        correctAnswer: 'Manzana',
       },
       {
-        content: 'How do you say "Good morning" in Spanish?',
-        answers: [
-          { content: 'Buenos días', correct: true },
-          { content: 'Buenas noches', correct: false },
-          { content: 'Buenas tardes', correct: false },
-          { content: 'Hola', correct: false },
-        ],
+        question: 'How do you say "Good morning" in Spanish?',
+        options: ['Buenos días', 'Buenas noches', 'Buenas tardes', 'Hola'],
+        correctAnswer: 'Buenos días',
       },
     ],
   },
@@ -29,22 +22,14 @@ const quizzes = [
     title: 'Advanced Spanish',
     questions: [
       {
-        content: 'What is the Spanish word for "cat"?',
-        answers: [
-          { content: 'Gato', correct: true },
-          { content: 'Perro', correct: false },
-          { content: 'Caballo', correct: false },
-          { content: 'Pájaro', correct: false },
-        ],
+        question: 'What is the Spanish word for "cat"?',
+        options: ['Gato', 'Perro', 'Caballo', 'Pájaro'],
+        correctAnswer: 'Gato',
       },
       {
-        content: 'How do you say "Thank you" in Spanish?',
-        answers: [
-          { content: 'Gracias', correct: true },
-          { content: 'Por favor', correct: false },
-          { content: 'Hola', correct: false },
-          { content: 'Adiós', correct: false },
-        ],
+        question: 'How do you say "Thank you" in Spanish?',
+        options: ['Gracias', 'Por favor', 'Hola', 'Adiós'],
+        correctAnswer: 'Gracias',
       },
     ],
   },
@@ -57,12 +42,24 @@ const seedQuizzes = async () => {
       useUnifiedTopology: true,
     });
 
-    // Clear existing quizzes
+    // Clear existing quizzes and questions
     await Quiz.deleteMany({});
+    await Question.deleteMany({});
 
-    await Quiz.insertMany(quizzes);
+    // Create quizzes and questions
+    for (const quiz of quizzes) {
+      const createdQuiz = await Quiz.create({ title: quiz.title });
+      for (const questionData of quiz.questions) {
+        const createdQuestion = await Question.create({
+          ...questionData,
+          quizId: createdQuiz._id,
+        });
+        createdQuiz.questions.push(createdQuestion._id);
+      }
+      await createdQuiz.save();
+    }
 
-    console.log('Quizzes seeded successfully');
+    console.log('Quizzes and questions seeded successfully');
     process.exit(0);
   } catch (err) {
     console.error('Seeding error:', err);
