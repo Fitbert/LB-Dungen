@@ -10,16 +10,10 @@ const resolvers = {
       return User.findOne({ username }).populate('quizzes');
     },
     quizzes: async () => {
-      return Quiz.find().populate('questions');
+      return Quiz.find()
     },
-    quiz: async (_, { id }) => {
+    quizzes: async (_, { id }) => {
       return Quiz.findById(id).populate('questions');
-    },
-    questions: async (_, { quizId }) => {
-      return Question.find({ quizId });
-    },
-    question: async (_, { id }) => {
-      return Question.findById(id).populate('answers');
     },
   },
 
@@ -45,23 +39,17 @@ const resolvers = {
       const token = authMiddleware(user);
       return { token, user };
     },
-    addQuiz: async (_, { title }) => {
-      const quiz = { id: quizzes.length + 1, title, questions: [] };
-      quizzes.push(quiz);
-      return quiz;
+    createQuiz: async (_, { title }) => {
+      const newQuiz = new Quiz({ title });
+      return await newQuiz.save();
     },
-    addQuestion: async (_, { content, quizId }) => {
-      const question = { id: quizzes.flatMap((quiz) => quiz.questions).length + 1, content, answers: [] };
-      const quiz = quizzes.find((quiz) => quiz.id === quizId);
-      quiz.questions.push(question);
-      return question;
+    addQuestion: async (_, { quizId, question, options, correctAnswer }) => {
+      const newQuestion = new Question({ question, options, correctAnswer, quizId });
+      return await newQuestion.save();
     },
-    addAnswer: async (_, { content, questionId }) => {
-      const answer = { id: quizzes.flatMap((quiz) => quiz.questions).flatMap((question) => question.answers).length + 1, content, questionId };
-      const question = quizzes.flatMap((quiz) => quiz.questions).find((question) => question.id === questionId);
-      question.answers.push(answer);
-      return answer;
-    },
+  },
+  Quiz: {
+    questions: async (parent) => await Question.find({ quizId: parent.id }),
   },
 };
 
