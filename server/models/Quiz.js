@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const questionSchema = require('./Questions');
 
 // Define schema for quiz
 const quizSchema = new Schema({
@@ -7,10 +8,7 @@ const quizSchema = new Schema({
         required: true,
     },
     questions: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Question',
-        },
+        questionSchema,
     ],
 });
 

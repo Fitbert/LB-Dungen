@@ -26,7 +26,6 @@
 
     "build": "cd client && npm run build"
 
-
   },
 
   "author": "",
@@ -37,7 +36,13 @@
 
     "concurrently": "^5.3.0"
 
+  },
+
+  "dependencies": {
+
+    "nodemon": "^3.1.3"
 
   }
 
 }
+
