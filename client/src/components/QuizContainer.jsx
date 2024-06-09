@@ -1,22 +1,35 @@
 import React, { useState } from 'react';
-//import apollo
+//import apollo and useQuery hook to fetch data from graphQL API
 import { useQuery, gql } from '@apollo/client';
 
 //import the graphql query you will use to get the quiz info from the database in the quiz container logic: need to replace this placeholder query with our query
 //is questions enough or will I have to dig a layer deeper to the 'question: content, answers' level of typedefs
-//TO DO: Fix the query to match our typedefs after ceci updates their structure and queries are working
+//query gets a quiz by its unique identifier $id
+//get quizzes const allows us to find quizzes by their Ids using useEffect hook below to randomly select a quiz by id
+
+
 const GET_QUIZZES = gql`
   query {
     quizzes {
-      id
-      questions
-    }
-    answers {
-      content
-      questionId
+      _id
     }
   }
 `;
+const GET_QUIZ = gql`
+  query GetQuiz($id: ID!) {
+    quiz(id: $id) {
+      _id
+      title
+      questions {
+        _id
+        question
+        options
+        correctAnswer
+      }
+    }
+  }
+`;
+
 //TO DO: Update the properties/data being accessed to reflect the query fields from our data and replace the example data fields currently used
 
 // Question component: dispays the question from the array of quesitons as the h3, maps through the array of answer choices to display them
@@ -51,42 +64,65 @@ const QuizResult = ({ score, questions }) => {
   );
 };
 
-// QuizContainer hold the logic and state/data for the quiz 
+// QuizContainer holds the logic and state/data for the quiz 
 //handle answer compares user answer to the answer of the current quiz array item's answer and sets the data/state of score as +1 if right answer
 //handle answer loops through all the quiz questions until it is done/at the last index of the questions
 //quizResult component prints the score
+//TO DO: make quizId dynamic instead of hard coded
 
 const QuizContainer = () => {
-  const { loading, error, data } = useQuery(GET_QUIZZES);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState({});
+  const [quizId, setQuizId] = useState(null);
+
+
+  const { loading: loadingQuizzes, error: errorQuizzes, data: quizzesData } = useQuery(GET_QUIZZES);
+  const { loading: loadingQuiz, error: errorQuiz, data: quizData } = useQuery(GET_QUIZ, {
+    variables: { id: quizId },
+    skip: !quizId,
+  });
+  
+  useEffect(() => {
+    if (quizzesData && quizzesData.quizzes.length > 0) {
+      const randomIndex = Math.floor(Math.random() * quizzesData.quizzes.length);
+      setQuizId(quizzesData.quizzes[randomIndex]._id);
+    }
+  }, [quizzesData]);
 
   const handleAnswer = (answer) => {
     setAnswers({ ...answers, [currentIndex]: answer });
-    const isCorrect = data?.quizzes[currentIndex].answer === answer;
+    const isCorrect = quizData?.quiz.questions[currentIndex].correctAnswer === answer;
     if (isCorrect) {
       setScore(score + 1);
     }
-    if (currentIndex < data?.quizzes.length - 1) {
+    if (currentIndex < quizData?.quiz.questions.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
       // Quiz completed
     }
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loadingQuizzes) return <p>Loading quizzes...</p>;
+  if (errorQuizzes) return <p>Error loading quizzes by id </p>;
+
+  if (loadingQuiz) return <p>Loading quiz...</p>;
+  if (errorQuiz) return <p>Error loading quiz </p>;
 
   return (
     <div>
-      {currentIndex < data?.quizzes.length ? (
-        <Question
-          question={data.quizzes[currentIndex]}
-          onAnswer={handleAnswer}
-        />
+    {quizData && quizData.quiz.questions.length > 0 ? (
+        currentIndex < quizData.quiz.questions.length ? (
+          <Question
+            question={quizData.quiz.questions[currentIndex]}
+            onAnswer={handleAnswer}
+          />
+        ) : (
+          <QuizResult score={score} questions={quizData.quiz.questions} />
+        )
       ) : (
-        <QuizResult score={score} questions={data.quizzes} />
+        <p>No quizzes available</p>
       )}
     </div>
   );
