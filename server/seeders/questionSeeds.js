@@ -1,6 +1,5 @@
-const mongoose = require('mongoose');
 const Quiz = require('../models/Quiz');
-const Question = require('../models/Questions');
+const mongoose = require('mongoose');
 
 const quizzes = [
   {
@@ -43,21 +42,22 @@ const seedQuizzes = async () => {
     });
 
     // Clear existing quizzes and questions
+    // await quizzes.deleteMany({});
     await Quiz.deleteMany({});
-    await Question.deleteMany({});
+    await Quiz.insertMany(quizzes);
 
-    // Create quizzes and questions
-    for (const quiz of quizzes) {
-      const createdQuiz = await Quiz.create({ title: quiz.title });
-      for (const questionData of quiz.questions) {
-        const createdQuestion = await Question.create({
-          ...questionData,
-          quizId: createdQuiz._id,
-        });
-        createdQuiz.questions.push(createdQuestion._id);
-      }
-      await createdQuiz.save();
-    }
+    // // Create quizzes and questions
+    // for (const quiz of quizzes) {
+    //   const createdQuiz = await Quiz.create({ title: quiz.title });
+    //   for (const questionData of quiz.questions) {
+    //     const createdQuestion = await Question.create({
+    //       ...questionData,
+    //       quizId: createdQuiz._id,
+    //     });
+    //     createdQuiz.questions.push(createdQuestion._id);
+    //   }
+    //   await createdQuiz.save();
+    // }
 
     console.log('Quizzes and questions seeded successfully');
     process.exit(0);
