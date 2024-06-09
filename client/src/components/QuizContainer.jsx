@@ -5,10 +5,16 @@ import { useQuery, gql } from '@apollo/client';
 //import the graphql query you will use to get the quiz info from the database in the quiz container logic: need to replace this placeholder query with our query
 //is questions enough or will I have to dig a layer deeper to the 'question: content, answers' level of typedefs
 //query gets a quiz by its unique identifier $id
+//get quizzes const allows us to find quizzes by their Ids using useEffect hook below to randomly select a quiz by id
 
-//TO DO: Fix the query to match our typedefs after ceci updates their structure and queries are working
-//TO DO: fetch the unique IDs of the quiz to replace 'quizID' in the function Quizcontainer in the useQuery hook
 
+const GET_QUIZZES = gql`
+  query {
+    quizzes {
+      _id
+    }
+  }
+`;
 const GET_QUIZ = gql`
   query GetQuiz($id: ID!) {
     quiz(id: $id) {
@@ -66,40 +72,57 @@ const QuizResult = ({ score, questions }) => {
 
 const QuizContainer = () => {
 
-  const quizId = '1';
-
-  const { loading, error, data } = useQuery(GET_QUIZ, {
-    variables: { id: quizId },
-  });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState({});
+  const [quizId, setQuizId] = useState(null);
+
+
+  const { loading: loadingQuizzes, error: errorQuizzes, data: quizzesData } = useQuery(GET_QUIZZES);
+  const { loading: loadingQuiz, error: errorQuiz, data: quizData } = useQuery(GET_QUIZ, {
+    variables: { id: quizId },
+    skip: !quizId,
+  });
+  
+  useEffect(() => {
+    if (quizzesData && quizzesData.quizzes.length > 0) {
+      const randomIndex = Math.floor(Math.random() * quizzesData.quizzes.length);
+      setQuizId(quizzesData.quizzes[randomIndex]._id);
+    }
+  }, [quizzesData]);
 
   const handleAnswer = (answer) => {
     setAnswers({ ...answers, [currentIndex]: answer });
-    const isCorrect = data?.quiz.questions[currentIndex].correctAnswer === answer;
+    const isCorrect = quizData?.quiz.questions[currentIndex].correctAnswer === answer;
     if (isCorrect) {
       setScore(score + 1);
     }
-    if (currentIndex < data?.quiz.questions.length - 1) {
+    if (currentIndex < quizData?.quiz.questions.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
       // Quiz completed
     }
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :</p>;
+  if (loadingQuizzes) return <p>Loading quizzes...</p>;
+  if (errorQuizzes) return <p>Error loading quizzes by id </p>;
+
+  if (loadingQuiz) return <p>Loading quiz...</p>;
+  if (errorQuiz) return <p>Error loading quiz </p>;
 
   return (
     <div>
-      {currentIndex < data?.quiz.questions.length ? (
-        <Question
-          question={data.quiz.questions[currentIndex]}
-          onAnswer={handleAnswer}
-        />
+    {quizData && quizData.quiz.questions.length > 0 ? (
+        currentIndex < quizData.quiz.questions.length ? (
+          <Question
+            question={quizData.quiz.questions[currentIndex]}
+            onAnswer={handleAnswer}
+          />
+        ) : (
+          <QuizResult score={score} questions={quizData.quiz.questions} />
+        )
       ) : (
-        <QuizResult score={score} questions={data.quiz.questions} />
+        <p>No quizzes available</p>
       )}
     </div>
   );
