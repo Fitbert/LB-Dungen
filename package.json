@@ -12,26 +12,21 @@
 
   "scripts": {
 
-    "start": "node server/server.js --ignore client",
-
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
-
+    "start": "node start.js",
+    "develop": "node start.js",
     "install": "cd server && npm i && cd ../client && npm i",
-
     "seeds": "cd server && npm run seed",
-
     "seed": "node server/config/seeds.js",
-    
-    "web": "concurrently \"cd server && npm run start\" \"cd client && npm run dev\"",
-
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "dev": "node start.js"
 
   },
 
   "author": "",
 
   "license": "ISC",
-
+  
+    
   "devDependencies": {
 
     "concurrently": "^5.3.0"
@@ -39,7 +34,7 @@
   },
 
   "dependencies": {
-
+    "concurrently": "^5.3.0",
     "nodemon": "^3.1.3"
 
   }
