@@ -14,13 +14,6 @@ const questionSchema = new Schema({
         type: String,
         required: true,
     },
-    quizId: {
-        type: Schema.Types.ObjectId,
-        ref: 'Quiz',
-        required: true,
-    },
 });
 
-const Question = model('Question', questionSchema);
-
-module.exports = Question;
+module.exports = questionSchema;
