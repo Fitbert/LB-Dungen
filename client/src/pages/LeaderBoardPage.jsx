@@ -1,6 +1,6 @@
 //leaderboard elements/components here 
 import React, { useEffect, useState } from 'react';
-import 'src/styles/LeaderboardPages.css';
+import '/styles/LeaderboardPages.css';
 export default function LeaderBoardPage() {
     const [leaderboardData, setLeaderboardData] = useState([]);
 
