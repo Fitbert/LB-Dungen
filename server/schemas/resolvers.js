@@ -1,4 +1,4 @@
-const { User, Quiz, Question } = require('../models');
+const { User, Quiz } = require('../models');
 const { authMiddleware } = require('../utils/auth');
 
 const resolvers = {
@@ -12,8 +12,8 @@ const resolvers = {
     quizzes: async () => {
       return Quiz.find()
     },
-    quizzes: async (_, { id }) => {
-      return Quiz.findById(id).populate('questions');
+    quiz: async (_, { id }) => {
+      return Quiz.findById(id)
     },
   },
 
@@ -43,13 +43,6 @@ const resolvers = {
       const newQuiz = new Quiz({ title });
       return await newQuiz.save();
     },
-    addQuestion: async (_, { quizId, question, options, correctAnswer }) => {
-      const newQuestion = new Question({ question, options, correctAnswer, quizId });
-      return await newQuestion.save();
-    },
-  },
-  Quiz: {
-    questions: async (parent) => await Question.find({ quizId: parent.id }),
   },
 };
 
