@@ -1,22 +1,29 @@
 import React, { useState } from 'react';
-//import apollo
+//import apollo and useQuery hook to fetch data from graphQL API
 import { useQuery, gql } from '@apollo/client';
 
 //import the graphql query you will use to get the quiz info from the database in the quiz container logic: need to replace this placeholder query with our query
 //is questions enough or will I have to dig a layer deeper to the 'question: content, answers' level of typedefs
+//query gets a quiz by its unique identifier $id
+
 //TO DO: Fix the query to match our typedefs after ceci updates their structure and queries are working
-const GET_QUIZZES = gql`
-  query {
-    quizzes {
-      id
-      questions
-    }
-    answers {
-      content
-      questionId
+//TO DO: fetch the unique IDs of the quiz to replace 'quizID' in the function Quizcontainer in the useQuery hook
+
+const GET_QUIZ = gql`
+  query GetQuiz($id: ID!) {
+    quiz(id: $id) {
+      _id
+      title
+      questions {
+        _id
+        question
+        options
+        correctAnswer
+      }
     }
   }
 `;
+
 //TO DO: Update the properties/data being accessed to reflect the query fields from our data and replace the example data fields currently used
 
 // Question component: dispays the question from the array of quesitons as the h3, maps through the array of answer choices to display them
@@ -51,24 +58,30 @@ const QuizResult = ({ score, questions }) => {
   );
 };
 
-// QuizContainer hold the logic and state/data for the quiz 
+// QuizContainer holds the logic and state/data for the quiz 
 //handle answer compares user answer to the answer of the current quiz array item's answer and sets the data/state of score as +1 if right answer
 //handle answer loops through all the quiz questions until it is done/at the last index of the questions
 //quizResult component prints the score
+//TO DO: make quizId dynamic instead of hard coded
 
 const QuizContainer = () => {
-  const { loading, error, data } = useQuery(GET_QUIZZES);
+
+  const quizId = '1';
+
+  const { loading, error, data } = useQuery(GET_QUIZ, {
+    variables: { id: quizId },
+  });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState({});
 
   const handleAnswer = (answer) => {
     setAnswers({ ...answers, [currentIndex]: answer });
-    const isCorrect = data?.quizzes[currentIndex].answer === answer;
+    const isCorrect = data?.quiz.questions[currentIndex].correctAnswer === answer;
     if (isCorrect) {
       setScore(score + 1);
     }
-    if (currentIndex < data?.quizzes.length - 1) {
+    if (currentIndex < data?.quiz.questions.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
       // Quiz completed
@@ -76,17 +89,17 @@ const QuizContainer = () => {
   };
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (error) return <p>Error :</p>;
 
   return (
     <div>
-      {currentIndex < data?.quizzes.length ? (
+      {currentIndex < data?.quiz.questions.length ? (
         <Question
-          question={data.quizzes[currentIndex]}
+          question={data.quiz.questions[currentIndex]}
           onAnswer={handleAnswer}
         />
       ) : (
-        <QuizResult score={score} questions={data.quizzes} />
+        <QuizResult score={score} questions={data.quiz.questions} />
       )}
     </div>
   );

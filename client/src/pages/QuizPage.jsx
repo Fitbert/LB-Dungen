@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/QuizPage.css';
+//import QuizContainer component which has logic to render all the quiz content
+import QuizContainer from '../components/QuizContainer'
 // import '../cursor.js';
-// 
 export default function QuizPage() {
   // const navigate = useNavigate();
 
@@ -37,10 +38,9 @@ export default function QuizPage() {
           </span>
         </p>
       </div>
-
-      {/*<div className="start-quiz-container">
+      { <QuizContainer/>
+      /*<div className="start-quiz-container">
         <button onClick={handleStartQuizClick}>Start Quiz</button>
-        <QuizContainer/>
       </div>
       */}
 
