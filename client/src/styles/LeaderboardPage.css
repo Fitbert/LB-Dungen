@@ -1,6 +1,6 @@
 .lead-page {
     background-color: #C3D2C7;
-    background-image: url('src/assets/Grey_Brick_Background.png');
+    background-image: url('/src/assets/Grey_Brick_Background.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode: overlay;
