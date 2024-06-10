@@ -1,7 +1,7 @@
 //need home page welcome here: instructions for logged in users
 import React, {  useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/HomePage.css';
+import '../styles/main.css';
 // import '../cursor.js';
 import Navbar from '../components/Navbar';
 import '../styles/main.css';
