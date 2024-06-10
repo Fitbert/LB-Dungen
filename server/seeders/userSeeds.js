@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const connectDB = require('./config/db');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
@@ -32,10 +32,7 @@ const users = [
 
 const seedUsers = async () => {
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/languagedungeon', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await connectDB();
 
     // Clear existing users
     await User.deleteMany({});

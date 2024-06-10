@@ -1,5 +1,5 @@
 const Quiz = require('../models/Quiz');
-const mongoose = require('mongoose');
+const connectDB = require('../config/db');
 
 const quizzes = [
   {
@@ -36,10 +36,7 @@ const quizzes = [
 
 const seedQuizzes = async () => {
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/languagedungeon', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await connectDB();
 
     // Clear existing quizzes and questions
     // await quizzes.deleteMany({});
