@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/QuizPage.css';
 //import QuizContainer component which has logic to render all the quiz content
