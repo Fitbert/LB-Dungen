@@ -4,7 +4,8 @@ import '../styles/SplashPage.css';
 import { ADD_USER } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
-// import './cursor.js'; // Import cursor.js as a script
+import logo1000 from '../images/LD_Logo_1000px.png';
+// import './cursor.js'; //p Import cursor.js as a script
 
 export default function SplashPage() {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ export default function SplashPage() {
     { Auth.loggedIn() ? navigate('/home') : (
     <div className="splash-page">
       <h1>Welcome to</h1>
-      <img src="public/images/LD_Logo_1000px.png" alt="logo" className="logo" />
+      <img src={logo1000} alt="logo" className="logo" />
 
       <h2>About The Language Dungeon</h2>
       <div className="paragraph-container">
