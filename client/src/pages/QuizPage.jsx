@@ -1,21 +1,22 @@
-// import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/QuizPage.css';
-//import QuizContainer component which has logic to render all the quiz content
-import QuizContainer from '../components/QuizContainer'
+// Import QuizContainer component which has logic to render all the quiz content
+import QuizContainer from '../components/QuizContainer';
+
 export default function QuizPage() {
-  //  const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const script = document.createElement('script');
-  //   script.src = '../cursor.js';
-  //   script.async = true;
-  //   document.body.appendChild(script);
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = '../cursor.js';
+    script.async = true;
+    document.body.appendChild(script);
 
-  //   return () => {
-  //     document.body.removeChild(script);
-  //   };
-  // }, []);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const handleStartQuizClick = () => {
     // Navigate to the first question of the quiz
@@ -24,7 +25,6 @@ export default function QuizPage() {
 
   return (
     <div className="quiz-page">
-
       <h1>Welcome to The Knowledge Crypt:</h1>
       <img src="src/assets/LD_Logo_1000px.png" alt="logo" className="logo" />
 
@@ -37,8 +37,8 @@ export default function QuizPage() {
           </span>
         </p>
       </div>
-      { <QuizContainer/>
-      /*<div className="start-quiz-container">
+      <QuizContainer />
+      {/*<div className="start-quiz-container">
         <button onClick={handleStartQuizClick}>Start Quiz</button>
       </div>
       */}
@@ -49,4 +49,3 @@ export default function QuizPage() {
     </div>
   );
 }
-
