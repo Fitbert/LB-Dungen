@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/QuizPage.css';
+import '../styles/main.css';
 // Import QuizContainer component which has logic to render all the quiz content
 import QuizContainer from '../components/QuizContainer';
 

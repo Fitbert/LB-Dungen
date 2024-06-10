@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/HomePage.css';
 // import '../cursor.js';
 import Navbar from '../components/Navbar';
-import '../styles/HomePage.css';
+import '../styles/main.css';
 
 export default function HomePage() {
   const navigate = useNavigate();

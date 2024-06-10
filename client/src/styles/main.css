@@ -1,0 +1,434 @@
+/* Global styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #C3D2C7;
+    background-image: url('/src/assets/Grey_Brick_Background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    padding: 10px 0;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .navbar-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D4e79e;
+    border-radius: 8px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-menu li {
+    margin-right: 20px;
+  }
+  
+  .navbar-menu li:last-child {
+    margin-right: 0;
+  }
+  
+  .navbar-menu a {
+    color: #3c1b43;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar-menu a:hover {
+    background-color: #C3D2C7;
+  }
+  
+  /* Header styles */
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .header-image {
+    max-width: 80%;
+    padding-top: 20%;
+  }
+  
+  /* Splash page styles */
+  .splash-page {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #501537;
+    padding: 20px;
+    margin-top: 100px;
+    box-sizing: border-box;
+  }
+  
+  .splash-page h1 {
+    font-size: 2em;
+    color: #3c1b43;
+    margin-bottom: 10px;
+  }
+  
+  .logo {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+  
+  .splash-page img {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .splash-page h2 {
+    font-size: 2em;
+    color: #501537;
+    margin-bottom: 10px;
+  }
+  
+  .splash-page .paragraph-container {
+    margin-bottom: 20px;
+    max-width: 800px;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  
+  .splash-page button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #501537;
+    color: #D4e79e;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .splash-page button:hover {
+    background-color: #3c1b43;
+  }
+  
+  .splash-page footer {
+    font-size: 0.875em;
+    color: #501537;
+    padding-top: 20px;
+    border-top: 1px solid #3c1b43;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .signup-container {
+    background-color: #D4e79e;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+  
+  .signup-container h2 {
+    color: #3c1b43;
+  }
+  
+  .signup-container p {
+    font-size: 1em;
+    color: #501537;
+    margin-bottom: 20px;
+  }
+  
+  .signup-container b {
+    font-weight: bold;
+  }
+  
+  .signup-container input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1em;
+    border: 1px solid #3c1b43;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .signup-container button {
+    width: 100%;
+  }
+  
+  /* Home page styles */
+  .home-page {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #501537;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .home-page h1 {
+    font-size: 2em;
+    color: #3c1b43;
+    margin-bottom: 10px;
+  }
+  
+  .home-page img {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .home-page h2 {
+    font-size: 2em;
+    color: #501537;
+    margin-bottom: 10px;
+  }
+  
+  .home-page .paragraph-container {
+    margin-bottom: 20px;
+    max-width: 800px;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  
+  .home-page .paragraph-text {
+    display: inline-block;
+    font-size: 1em;
+    color: #501537;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 4px;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  
+  .home-page button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #501537;
+    color: #D4e79e;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+  }
+  
+  .home-page button:hover {
+    background-color: #3c1b43;
+  }
+  
+  .home-page footer {
+    font-size: 0.875em;
+    color: #501537;
+    padding-top: 20px;
+    border-top: 1px solid #3c1b43;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Leaderboard page styles */
+  .lead-page {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #501537;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .lead-page h1 {
+    text-align: center;
+    font-size: 34px;
+    color: #3c1b43;
+    margin-bottom: 10px;
+  }
+  
+  .lead-page img {
+    max-width: 100px;
+    margin-bottom: 20px;
+  }
+  
+  .lead-page h2 {
+    font-size: 34px;
+    color: #501537;
+    margin-bottom: 10px;
+  }
+  
+  .lead-page .paragraph-container {
+    margin-bottom: 20px;
+  }
+  
+  .paragraph-text {
+    display: inline-block;
+    font-size: 16px;
+    color: #501537;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 4px;
+    max-width: 400px;
+    margin: 0 20px;
+  }
+  
+  .lead-page button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #501537;
+    color: #D4e79e;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .lead-page button:hover {
+    background-color: #3c1b43;
+  }
+  
+  .lead-page footer {
+    font-size: 14px;
+    color: #501537;
+    padding-top: 20px;
+    border-top: 1px solid #3c1b43;
+  }
+  
+  /* Quiz page styles */
+  .quiz-page {
+    background-color: #C3D2C7;
+    background-image: url('/src/assets/Grey_Brick_Background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #501537;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .start-quiz-container {
+    margin-top: 30px;
+  }
+  
+  .start-quiz-container button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #501537;
+    color: #D4e79e;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .start-quiz-container button:hover {
+    background-color: #3c1b43;
+  }
+  
+  /* Error page styles */
+  .error-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250%;
+    height: 100vh;
+    background-color: #4a594b;
+  }
+  
+  .error-content {
+    text-align: center;
+  }
+  
+  .error-logo {
+    width: 700px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .error-text {
+    font-size: 24px;
+    color: #D4e79e;
+    margin-bottom: 10px;
+  }
+  
+  .error-message {
+    font-size: 18px;
+    color: #D4e79e;
+  }
+  
+  /* Media queries */
+  @media screen and (max-width: 992px) {
+    .splash-page h1, .splash-page h2, .home-page h1, .home-page h2 {
+      font-size: 1.5em;
+    }
+  
+    .splash-page button, .home-page button {
+      font-size: 0.875em;
+    }
+  
+    .signup-container {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .splash-page h1, .splash-page h2, .home-page h1, .home-page h2 {
+      font-size: 1.25em;
+    }
+  
+    .signup-container {
+      width: 100%;
+      max-width: 250px;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .splash-page h1, .splash-page h2, .home-page h1, .home-page h2 {
+      font-size: 1em;
+    }
+  
+    .signup-container {
+      width: 100%;
+      max-width: 200px;
+    }
+  }

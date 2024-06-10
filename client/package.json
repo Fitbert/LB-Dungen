@@ -13,14 +13,13 @@
     "@apollo/client": "^3.10.4",
     "@stripe/react-stripe-js": "^2.7.1",
     "@stripe/stripe-js": "^3.5.0",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.1",
-    "vite": "^4.5.3",
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react": "^4.0.3"
+    "react-router-dom": "^6.23.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
