@@ -108,7 +108,7 @@ html, body {
   }
   
   .splash-page img {
-    max-width: 100%;
+    max-width: 80%;
     margin-bottom: 20px;
   }
   
@@ -191,8 +191,6 @@ html, body {
   /* Home page styles */
   .home-page {
     width: 100%;
-    max-width: 1200px;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -204,25 +202,25 @@ html, body {
   }
   
   .home-page h1 {
-    font-size: 2em;
+    font-size: 40pt;
     color: #3c1b43;
     margin-bottom: 10px;
   }
   
   .home-page img {
-    max-width: 200%;
-    margin-bottom: 20px;
+    max-width: 80%;
+    margin-bottom: 0px;
   }
   
   .home-page h2 {
-    font-size: 2em;
+    font-size: 25pt;
     color: #501537;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
   }
   
   .home-page .paragraph-container {
     margin-bottom: 20px;
-    max-width: 800px;
+    max-width: 500px;
     padding: 0 20px;
     box-sizing: border-box;
   }
@@ -232,9 +230,9 @@ html, body {
     font-size: 1em;
     color: #501537;
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px;
+    padding: 0px;
     border-radius: 4px;
-    max-width: 80%;
+    max-width: 90%;
     margin: 0 auto;
   }
   
@@ -331,18 +329,20 @@ html, body {
   
   /* Quiz page styles */
   .quiz-page {
-    background-color: #C3D2C7;
-    background-image: url('/src/assets/Grey_Brick_Background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-blend-mode: overlay;
-    text-align: center;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     color: #501537;
-    width: 100vw;
-    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .quiz-page img {
+    max-width: 100%;
+    margin-bottom: 0px;
   }
   
   .start-quiz-container {
@@ -369,9 +369,8 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 250%;
+    width: 100%;
     height: 100vh;
-    background-color: #4a594b;
   }
   
   .error-content {
@@ -379,20 +378,20 @@ html, body {
   }
   
   .error-logo {
-    width: 700px;
+    width: 1500px;
     height: auto;
     margin-bottom: 20px;
   }
   
   .error-text {
-    font-size: 24px;
-    color: #D4e79e;
+    font-size: 50px;
+    color: #501537;
     margin-bottom: 10px;
   }
   
   .error-message {
-    font-size: 18px;
-    color: #D4e79e;
+    font-size: 25px;
+    color: #501537;
   }
   
   /* Media queries */

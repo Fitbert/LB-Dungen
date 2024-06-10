@@ -15,7 +15,7 @@ export default function QuizPage() {
   return (
     <div className="quiz-page">
       <h1>Welcome to The Knowledge Crypt:</h1>
-      <img src="src/assets/LD_Logo_1000px.png" alt="logo" className="logo" />
+      <img src="src/assets/LD_Logo_600px.png" alt="logo" className="logo" />
 
       <h2>Test Your Language Skills</h2>
       <div className="paragraph-container">
@@ -26,6 +26,8 @@ export default function QuizPage() {
           </span>
         </p>
       </div>
+
+      
       <QuizContainer />
       <div className="start-quiz-container">
         <button onClick={handleStartQuizClick}>Start Quiz</button>
