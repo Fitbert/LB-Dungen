@@ -1,5 +1,5 @@
 //need home page welcome here: instructions for logged in users
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/HomePage.css';
 // import '../cursor.js';
@@ -8,7 +8,35 @@ import '../styles/HomePage.css';
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const [username , setUsername] = useState('');
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) return navigate('/login');
+
+      try {
+        const response = await fetch('http://localhost:3001/user', {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: token,
+          },
+        });
+        if (!response.ok) {
+          throw new Error('Failed to fetch user');
+        }
+        const data = await response.json();
+        setUsername(data.username);
+      } catch (error) {
+        console.error('Error fetching user:', error);
+        navigate('/login');
+      }
+    };
+
+    fetchUser();
+  }, [navigate]);
+    
+  )
   // useEffect(() => {
   //   const script = document.createElement('script');
   //   script.src = '../cursor.js';
@@ -29,7 +57,7 @@ export default function HomePage() {
     <div className="home-page">
       
 
-      <h1>Welcome, [User]!</h1>
+      <h1>Welcome, {username}!</h1>
       <img src="/images/LD_Logo_1000px.png" alt="logo" className="logo" />
 
       <h2>Continue Your Language Learning Journey</h2>
