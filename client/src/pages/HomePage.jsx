@@ -30,7 +30,7 @@ export default function HomePage() {
       
 
       <h1>Welcome, [User]!</h1>
-      <img src="src/assets/LD_Logo_1000px.png" alt="logo" className="logo" />
+      <img src="/images/LD_Logo_1000px.png" alt="logo" className="logo" />
 
       <h2>Continue Your Language Learning Journey</h2>
       <div className="paragraph-container">
