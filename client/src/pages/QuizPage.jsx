@@ -27,10 +27,10 @@ export default function QuizPage() {
         </p>
       </div>
       <QuizContainer />
-      {/*<div className="start-quiz-container">
+      <div className="start-quiz-container">
         <button onClick={handleStartQuizClick}>Start Quiz</button>
       </div>
-      */}
+      
 
       <footer>
         &copy; 2023 The Language Dungeon. All rights reserved.
