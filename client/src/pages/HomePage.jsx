@@ -6,9 +6,9 @@ import '../styles/HomePage.css';
 import Navbar from '../components/Navbar';
 import '../styles/HomePage.css';
 
-export default function HomePage() {
-  const navigate = useNavigate();
-  const [username , setUsername] = useState('');
+// export default function HomePage() {
+//   const navigate = useNavigate();
+//   const [username , setUsername] = useState('');
 
   // useEffect(() => {
   //   const fetchUser = async () => {
@@ -36,7 +36,7 @@ export default function HomePage() {
   //   fetchUser();
   // }, [navigate]);
     
-  )
+  // )
   // useEffect(() => {
   //   const script = document.createElement('script');
   //   script.src = '../cursor.js';
