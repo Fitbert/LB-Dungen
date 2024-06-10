@@ -20,7 +20,7 @@
 
     "seeds": "cd server && npm run seed",
 
-    "seed": "node server/config/seeds.js",
+    "seed": "node seeds.js",
 
     "build": "cd client && npm run build",
 
