@@ -268,21 +268,9 @@ html, body {
     flex-direction: column;
     justify-content: space-between;
     color: #501537;
-    width: 100vw;
-    height: 100vh;
+    height: 70vh;
   }
   
-  .lead-page h1 {
-    text-align: center;
-    font-size: 34px;
-    color: #3c1b43;
-    margin-bottom: 10px;
-  }
-  
-  .lead-page img {
-    max-width: 100px;
-    margin-bottom: 20px;
-  }
   
   .lead-page h2 {
     font-size: 34px;
@@ -430,4 +418,29 @@ html, body {
       width: 100%;
       max-width: 200px;
     }
+  }
+
+/* Donate page styles */
+.donate-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    padding: 20px;
+  }
+  
+  .donate-container {
+    max-width: 600px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .donate-heading {
+    font-size: 2em;
+    color: #501537;
+    margin-bottom: 20px;
   }
