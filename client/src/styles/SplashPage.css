@@ -1,15 +1,30 @@
-.splash-page {
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #C3D2C7;
   background-image: url('/src/assets/Grey_Brick_Background.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: overlay;
-  text-align: center;
+}
+
+.splash-page {
+  width: 100%;
+  max-width: 1200px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   color: #501537;
   padding: 20px;
   box-sizing: border-box;
@@ -24,7 +39,7 @@
 .logo {
   max-width: 100%;
   height: auto;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   display: block;
 }
 
