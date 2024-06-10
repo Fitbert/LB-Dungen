@@ -36,7 +36,7 @@ export default function SplashPage() {
     { Auth.loggedIn() ? navigate('/home') : (
     <div className="splash-page">
       <h1>Welcome to</h1>
-      <img src="src/assets/LD_Logo_1000px.png" alt="logo" className="logo" />
+      <img src="public/images/LD_Logo_1000px.png" alt="logo" className="logo" />
 
       <h2>About The Language Dungeon</h2>
       <div className="paragraph-container">
