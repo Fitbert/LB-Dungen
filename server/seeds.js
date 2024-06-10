@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const db = require('../config/connection');
+const db = require('./config/db');
 const { User } = require('./models');
 const userSeeds = require('./seeders/userSeeds');
 const questionSeeds = require('./seeders/questionSeeds');
