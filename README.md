@@ -7,25 +7,47 @@ The Language Dungeon is a language learning platform in which students of Spanis
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+No installation required, you can navigate to the deployed website in the section below or clone the repository to run a local version of the site. 
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Navigate to the project's website: https://lb-dungen.onrender.com/ and create a username and password. From there, navigate to the home page and select to begin a quiz. If you would like to donate to the site, you can click on the 'donate' button in the navbar to donate via Stripe.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+![screenshot of main page of the Language Dungeon](client/src/assets/language-dungeon-screenshot.png)
+
 
 ## Credits
 
 This project is a UT Coding Bootcamp collaboration between Cecilia Garcia, Andrew Blanchard, Carlos Asencio Morales, Albert Terrazas, and Victoria Greenwood.
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
+Reference for how to add images in react:
 
-If you followed tutorials, include links to those here as well.
+Anglemire, C. (2020, July 2). How to Render Images in a React App. Medium. Retrieved May 30, 2024, from https://medium.com/@carlie.anglemire/requiring-images-in-react-9bcf6a8c2cb
+
+Reference for file structure/syntax to create a quiz in react:
+
+Aguilar, J. (2018, September 19). Create a quiz with React. Medium. Joshua Aguilar. Retrieved June 6, 2024, from https://tactician.medium.com/create-a-quiz-with-react-6bd826c04f6
+https://tactician.medium.com/create-a-quiz-with-react-6bd826c04f6
+
+
+Bootcamp Tutors:
+
+Assistance with debugging splash page image and cursor image/functionality
+assistance with debugging database queries
+assistance with debuggin website deployment
+
+Class instructional team:
+
+Debugging package.json errors, incompatible package versions
+Debugging merge conflicts
+Debugging server queries returning null values
+
+Claude AI:
+
+Assistance formatting code/logic for rendering quiz questions and answers in QuizContainer component, making it compatible with mongodb, dynamically rendering quizzes by ID
+
+
 
 ## License
 
