@@ -4,7 +4,7 @@ import '../styles/SplashPage.css';
 import { ADD_USER } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
-import logo1000 from '../images/LD_Logo_1000px.png';
+import logo1000 from '/images/LD_Logo_1000px.png';
 // import './cursor.js'; //p Import cursor.js as a script
 
 export default function SplashPage() {
