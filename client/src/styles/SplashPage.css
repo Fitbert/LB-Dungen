@@ -5,34 +5,36 @@
   background-repeat: no-repeat;
   background-blend-mode: overlay;
   text-align: center;
-  height: 150%;
-  width: 300%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   color: #501537;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .splash-page h1 {
-  font-size: 34px;
+  font-size: 2em;
   color: #3c1b43;
   margin-bottom: 10px;
 }
 
 .logo {
-  width: 600px;
+  max-width: 100%;
   height: auto;
   margin: 0 auto;
   display: block;
 }
 
 .splash-page img {
-  max-width: 400px;
+  max-width: 100%;
   margin-bottom: 20px;
 }
 
 .splash-page h2 {
-  font-size: 34px;
+  font-size: 2em;
   color: #501537;
   margin-bottom: 10px;
 }
@@ -43,14 +45,13 @@
 
 .splash-page button {
   padding: 10px 20px;
-  font-size: 18px;
+  font-size: 1em;
   background-color: #501537;
   color: #D4e79e;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  
 }
 
 .splash-page button:hover {
@@ -58,10 +59,12 @@
 }
 
 .splash-page footer {
-  font-size: 14px;
+  font-size: 0.875em;
   color: #501537;
   padding-top: 20px;
   border-top: 1px solid #3c1b43;
+  width: 100%;
+  text-align: center;
 }
 
 .signup-container {
@@ -69,9 +72,9 @@
   padding: 20px;
   border-radius: 8px;
   margin-top: 30px;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 100%;
+  width: 400px;
+  box-sizing: border-box;
 }
 
 .signup-container h2 {
@@ -79,7 +82,7 @@
 }
 
 .signup-container p {
-  font-size: 16px;
+  font-size: 1em;
   color: #501537;
   margin-bottom: 20px;
 }
@@ -93,7 +96,7 @@
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
-  font-size: 16px;
+  font-size: 1em;
   border: 1px solid #3c1b43;
   border-radius: 4px;
   box-sizing: border-box;
@@ -103,18 +106,36 @@
   width: 100%;
 }
 
-
-/* Tablets - header changes color */
 @media screen and (max-width: 992px) {
+  .splash-page h1, .splash-page h2 {
+    font-size: 1.5em;
   }
 
+  .splash-page button {
+    font-size: 0.875em;
+  }
 
-/* Large smartphones - navbar changes color */
-@media screen and (max-width: 768px) {
- 
+  .signup-container {
+    width: 300px;
+  }
 }
 
-/* Small smartphones - image placeholders change color */
+@media screen and (max-width: 768px) {
+  .splash-page h1, .splash-page h2 {
+    font-size: 1.25em;
+  }
+
+  .signup-container {
+    width: 250px;
+  }
+}
+
 @media screen and (max-width: 576px) {
-  
+  .splash-page h1, .splash-page h2 {
+    font-size: 1em;
+  }
+
+  .signup-container {
+    width: 200px;
+  }
 }
