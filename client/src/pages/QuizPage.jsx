@@ -1,23 +1,14 @@
-import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/QuizPage.css';
 // Import QuizContainer component which has logic to render all the quiz content
 import QuizContainer from '../components/QuizContainer';
 
 export default function QuizPage() {
-  const navigate = useNavigate();
+  
 
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = '../cursor.js';
-    script.async = true;
-    document.body.appendChild(script);
+  
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
+   
   const handleStartQuizClick = () => {
     // Navigate to the first question of the quiz
     navigate('/quiz/question/1');
