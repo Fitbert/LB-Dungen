@@ -10,31 +10,31 @@ export default function HomePage() {
   const navigate = useNavigate();
   const [username , setUsername] = useState('');
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const token = localStorage.getItem('token');
-      if (!token) return navigate('/login');
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const token = localStorage.getItem('token');
+  //     if (!token) return navigate('/login');
 
-      try {
-        const response = await fetch('http://localhost:3001/user', {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: token,
-          },
-        });
-        if (!response.ok) {
-          throw new Error('Failed to fetch user');
-        }
-        const data = await response.json();
-        setUsername(data.username);
-      } catch (error) {
-        console.error('Error fetching user:', error);
-        navigate('/login');
-      }
-    };
+  //     try {
+  //       const response = await fetch('http://localhost:3001/user', {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           Authorization: token,
+  //         },
+  //       });
+  //       if (!response.ok) {
+  //         throw new Error('Failed to fetch user');
+  //       }
+  //       const data = await response.json();
+  //       setUsername(data.username);
+  //     } catch (error) {
+  //       console.error('Error fetching user:', error);
+  //       navigate('/login');
+  //     }
+  //   };
 
-    fetchUser();
-  }, [navigate]);
+  //   fetchUser();
+  // }, [navigate]);
     
   )
   // useEffect(() => {
