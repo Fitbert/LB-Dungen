@@ -11,7 +11,7 @@ export default function Navbar() {
             <Link to="/home">Home</Link>
           </li>
           <li>
-            <Link to="/leaderboard">Leaderboard</Link>
+            <Link to="/leaderBoard">Leaderboard</Link>
           </li>
           <li>
             <Link to="/quiz">Quiz</Link>

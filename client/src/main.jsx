@@ -37,7 +37,7 @@ const router = createBrowserRouter([
         element: <LeaderBoardPage />,
       },
       {
-        path: '/quiz',
+        path: 'quiz',
         element: <QuizPage />,
       },
       {
