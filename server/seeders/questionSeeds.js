@@ -1,5 +1,5 @@
 const Quiz = require('../models/Quiz');
-const connectDB = require('../config/db');
+const db = require('../config/db');
 
 const quizzes = [
   {
@@ -36,7 +36,7 @@ const quizzes = [
 
 const seedQuizzes = async () => {
   try {
-    await connectDB();
+    await db();
 
     // Clear existing quizzes and questions
     // await quizzes.deleteMany({});
