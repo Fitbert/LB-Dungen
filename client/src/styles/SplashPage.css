@@ -103,3 +103,18 @@
   width: 100%;
 }
 
+
+/* Tablets - header changes color */
+@media screen and (max-width: 992px) {
+  }
+
+
+/* Large smartphones - navbar changes color */
+@media screen and (max-width: 768px) {
+ 
+}
+
+/* Small smartphones - image placeholders change color */
+@media screen and (max-width: 576px) {
+  
+}
