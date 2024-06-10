@@ -8,7 +8,7 @@ export default function ErrorPage() {
   return (
     <div className="error-page">
       <div className="error-content">
-        <img src="src/assets/Error_Page_Image.png" alt="logo" className="error-logo" />
+        <img src="/assets/Error_Page_Image.png" alt="logo" className="error-logo" />
         <p className="error-text">Sorry, we have encountered an error.</p>
         <p className="error-message">
           <i>{error.statusText || error.message}</i>
