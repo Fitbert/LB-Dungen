@@ -15,5 +15,15 @@ export default defineConfig({
         secure: false,
       }
     }
+  },
+  build: {
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+      },
+    },
+    outDir: 'dist',
+    sourcemap: false,
   }
 });
