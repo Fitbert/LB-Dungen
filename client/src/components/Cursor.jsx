@@ -7,7 +7,7 @@ const Cursor = () => {
     if (mounted) return;
     mounted = true;
     const cursor = document.createElement('img');
-    cursor.src = '../public/assets/LD_Bat_100px.png';
+    cursor.src = '../public/images/LD_Bat_100px.png';   
     cursor.style.position = 'fixed';
     cursor.style.pointerEvents = 'none';
     document.body.appendChild(cursor);
