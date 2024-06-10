@@ -1,13 +1,13 @@
 //need home page welcome here: instructions for logged in users
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/HomePage.css';
 // import '../cursor.js';
 import Navbar from '../components/Navbar';
 import '../styles/HomePage.css';
 
-// export default function HomePage() {
-//   const navigate = useNavigate();
+export default function HomePage() {
+  const navigate = useNavigate();
 //   const [username , setUsername] = useState('');
 
   // useEffect(() => {
@@ -57,7 +57,7 @@ import '../styles/HomePage.css';
     <div className="home-page">
       
 
-      <h1>Welcome, {username}!</h1>
+      <h1>Welcome, [username]!</h1>
       <img src="/images/LD_Logo_1000px.png" alt="logo" className="logo" />
 
       <h2>Continue Your Language Learning Journey</h2>
