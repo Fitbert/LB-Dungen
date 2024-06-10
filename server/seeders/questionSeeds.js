@@ -36,7 +36,7 @@ const quizzes = [
 
 const seedQuizzes = async () => {
   try {
-    await db();
+    await db;
 
     // Clear existing quizzes and questions
     // await quizzes.deleteMany({});
