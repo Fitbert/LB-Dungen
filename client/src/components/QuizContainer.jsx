@@ -35,7 +35,7 @@ const GET_QUIZ = gql`
 // Question component: dispays the question from the array of quesitons as the h3, maps through the array of answer choices to display them
 //map throught the array of questions, then handle click event for choosing an answer
 //onAnswer gets used in the handleAnswer function for even handling when user answers a question
-const Question = ({ question, choices, onAnswer }) => {
+const Question = ({ question, onAnswer }) => {
   const handleAnswer = (choice) => {
     onAnswer(choice);
   };
@@ -44,7 +44,7 @@ const Question = ({ question, choices, onAnswer }) => {
     <div>
       <h3>{question.question}</h3>
       <ul>
-        {question.choices.map((choice, index) => (
+        {question.options.map((choice, index) => (
           <li key={index}>
             <button onClick={() => handleAnswer(choice)}>{choice}</button>
           </li>
@@ -115,9 +115,9 @@ const QuizContainer = () => {
     {quizData && quizData.quiz.questions.length > 0 ? (
         currentIndex < quizData.quiz.questions.length ? (
           <Question
-            question={quizData.quiz.questions[currentIndex]}
-            onAnswer={handleAnswer}
-          />
+  question={quizData.quiz.questions[currentIndex]}
+  onAnswer={handleAnswer}
+/>
         ) : (
           <QuizResult score={score} questions={quizData.quiz.questions} />
         )
