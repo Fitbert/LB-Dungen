@@ -32,7 +32,7 @@ const users = [
 
 const seedUsers = async () => {
   try {
-    await db();
+    await db;
 
     // Clear existing users
     await User.deleteMany({});
