@@ -1,38 +1,35 @@
 const jwt = require('jsonwebtoken');
 
-// Secret key for JWT signing and verification
-const secret = process.env.JWT_SECRET || 'your_secret_key';
+const secret = 'mysecretsshhhhh';
+const expiration = '2h';
 
-// Middleware function to authenticate users
-function authMiddleware({ req }) {
-  // Get the token from the request headers
-  let token = '';
-  let user = null;
+module.exports = {
+  signToken: function ({ username, email, _id }) {
+    const payload = { username, email, _id };
 
-  if (req.headers) {
-    token = req.headers.authorization || '';
+    return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+  },
 
-    // Remove 'Bearer ' from the token string if it exists
-    if (token.startsWith('Bearer ')) {
-      token = token.slice(7, token.length).trimLeft();
+  authMiddleware: function ({ req }) {
+    // allows token to be sent via req.body, req.query, or headers
+    let token = req.body.token || req.query.token || req.headers.authorization;
+
+    // separate "Bearer" from "<tokenvalue>"
+    if (req.headers.authorization) {
+      token = token.split(' ').pop().trim();
     }
 
-    // Verify the token if it exists
-    if (token) {
-      try {
-        // Decode the token and attach user information to the context
-        user = jwt.verify(token, secret);
-      } catch (err) {
-        console.error('Token verification error:', err);
-      }
+    if (!token) {
+      return req;
     }
-  } else {
-    // Handle the case where req.headers is undefined
-    console.log('Request headers are undefined, skipping authentication');
-  }
 
-  // Attach user information to the request context
-  return { user };
-}
+    try {
+      const { data } = jwt.verify(token, secret, { maxAge: expiration });
+      req.user = data;
+    } catch {
+      console.log('Invalid token');
+    }
 
-module.exports = { authMiddleware };
+    return req; // return the request object so it can be used in context
+  },
+};
