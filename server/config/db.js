@@ -1,19 +1,11 @@
-require("dotenv").config();
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-const dbURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/languagedungeon';
+const connectionString = process.env.MONGODB_URI || `mongodb://localhost:27017/${process.env.DB_NAME}`;
 
-mongoose.connect(dbURI)
-  .then(() => console.log('Mongoose is connected to', dbURI))
-  .catch((err) => {
-    console.error('Mongoose connection error:', err);
-    process.exit(1);  // Exit the process if the connection fails
-  });
-
-
-  
-mongoose.connection.on('connected', () => {
-  console.log('Mongoose is connected to', dbURI);
+mongoose.connect(connectionString, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 module.exports = mongoose.connection;
