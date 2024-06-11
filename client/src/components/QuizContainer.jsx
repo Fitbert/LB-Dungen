@@ -17,7 +17,7 @@ const GET_QUIZZES = gql`
 `;
 const GET_QUIZ = gql`
   query GetQuiz($id: ID!) {
-    quiz(id: $id) {
+    quiz(_id: $id) {
       _id
       title
       questions {
