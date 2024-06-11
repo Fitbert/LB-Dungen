@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/AvatarSelection.css';
-import '../
+
 
 const avatars = [
   '2525012_ant man_antenna_hero_super hero_icon.png',
