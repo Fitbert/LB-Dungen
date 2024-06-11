@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/AvatarSelection.css';
 
+
 const avatars = [
   '2525012_ant man_antenna_hero_super hero_icon.png',
   '2612562_hero_super girl_woman_wonder woman_icon.png',
@@ -20,7 +21,7 @@ const AvatarSelection = ({ setAvatar }) => {
         {avatars.map((avatar) => (
           <img
             key={avatar}
-            src={`/assets/avatars/${avatar}`}
+            src={`../assets/avatars/${avatar}`}
             alt={avatar}
             onClick={() => setAvatar(avatar)}
             className="avatar-option"
