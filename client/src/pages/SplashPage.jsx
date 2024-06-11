@@ -22,7 +22,9 @@ export default function SplashPage() {
   const handleSignUpClick = async () => {
     try {
       const { data } = await addUser({ variables: { username, password, avatar } });
-      Auth.login(data.addUser.token);
+      const token = data.addUser.token;
+      Auth.login(token);
+      navigate('/home'); // Redirect the user to the home page after successful login
     } catch (e) {
       console.error('Error signing up:', e);
     }
