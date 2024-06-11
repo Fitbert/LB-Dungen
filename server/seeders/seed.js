@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { User, Quiz } = require('./models'); // Adjust the import based on your model structure
+const { User, Quiz } = require('../models'); // Adjust the import based on your model structure
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/languagedungeon', {
   useNewUrlParser: true,
