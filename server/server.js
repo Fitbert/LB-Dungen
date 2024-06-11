@@ -3,7 +3,7 @@ const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
-const db = require('./config/connection');
+const db = require('./config/db');
 require('dotenv').config(); // Load environment variables
 const cors = require('cors'); // Import cors for cross-origin handling
 
