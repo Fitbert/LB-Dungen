@@ -21,7 +21,7 @@ const AvatarSelection = ({ setAvatar }) => {
         {avatars.map((avatar) => (
           <img
             key={avatar}
-            src={`/assets/avatar/${avatar}`}
+            src={`src/assets/avatars/${avatar}`}
             alt={avatar}
             onClick={() => setAvatar(avatar)}
             className="avatar-option"
