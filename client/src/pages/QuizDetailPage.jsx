@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_QUIZ } from '../utils/queries';
+import '../styles/main.css';
 
 const QuizDetailPage = () => {
   const { quizId } = useParams(); // Ensure this matches your route parameter

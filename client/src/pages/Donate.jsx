@@ -2,6 +2,7 @@ import React from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from '../components/CheckoutForm';
+import '../styles/main.css';
 
 const stripePromise = loadStripe('your-publishable-key-here');
 
