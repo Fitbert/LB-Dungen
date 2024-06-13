@@ -18,6 +18,9 @@ app.use(cors());
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  persistedQueries: {
+    cache: 'bounded',
+  },
   context: ({ req }) => {
     console.log('Request headers:', req.headers);
     return authMiddleware({ req });
@@ -34,6 +37,7 @@ async function startApolloServer() {
 
     // Define a REST endpoint for POST requests
     app.post('/api/users', async (req, res) => {
+      console.log('Request body:', req.body);
       try {
         const newUser = new User(req.body);
         const savedUser = await newUser.save();
